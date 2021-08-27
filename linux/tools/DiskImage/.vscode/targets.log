@@ -1,0 +1,860 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.82.90
+# Built for i686-pc-mingw32
+# Copyright (C) 1988-2012 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Fri Jul 23 20:21:55 2021
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
+# automatic
+?F = $(notdir $?)
+# makefile (from 'makefile', line 60)
+LDFLAGS_RELEASE64 = $(LDFLAGS) -s -static-libstdc++ -static-libgcc -static -m64
+# default
+.SHELLFLAGS := -c
+# makefile (from 'makefile', line 24)
+RCFLAGS_DEBUG32 = $(RCFLAGS)
+# makefile
+MAKEFLAGS = Rrqp
+# makefile (from 'makefile', line 59)
+LIB_RELEASE64 = $(LIB)
+# environment
+VSCODE_LOG_NATIVE = false
+# automati 
+c
+?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# makefile (from 'makefile', line 71)
+OBJ_RELEASE64 = $(OBJDIR_RELEASE64)\\print.o $(OBJDIR_RELEASE64)\\main.o $(OBJDIR_RELEASE64)\\filesystem.o $(OBJDIR_RELEASE64)\\file.o $(OBJDIR_RELEASE64)\\fat32.o $(OBJDIR_RELEASE64)\\fat16.o $(OBJDIR_RELEASE64)\\fat12.o $(OBJDIR_RELEASE64)\\ext2.o
+# automatic
+@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+# environment
+HOMEDRIVE = C:
+# automatic
+@F = $(notdir $@)
+# automatic
+^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
+# makefile
+CURDIR := c:/projects/linux/tools/DiskImage
+# default
+SHELL := sh.exe
+# makefile (from 'makefile', line 39)
+OBJDIR_RELEASE32 = obj\\Release32
+# environment
+WINDIR = C:\Windows
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'makefile', line 51)
+DEP_DEBUG64 = 
+# environment
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+# makefile (from 'makefile', line 15)
+CFLAGS = -Wall -fexceptions
+# environment
+ONEDRIVE = C:\Users\wade4\OneDrive
+# makefile (from 'makefile', line 45)
+RESINC_DEBUG64 = $(RESINC)
+# makefile (from 'makefile', line 28)
+OBJDIR_DEBUG32 = obj\\Debug32
+# makefile (from 'makefile', line 29)
+DEP_DEBUG32 = 
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+# makefile (from 'makefile', line 1)
+MAKEFILE_LIST :=  makefile
+# environment
+TMP = C:\Users\wade4\AppData\Local\Temp
+# makefile (from 'makefile', line 49)
+LDFLAGS_DEBUG64 = $(LDFLAGS) -static-libstdc++ -static-libgcc -static -m64
+# makefile (from 'makefile', line 30)
+OUT_DEBUG32 = bin\\Debug32\\DiskImage32.exe
+# makefile (from 'makefile', line 12)
+WINDRES = windres.exe
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'makefile', line 48)
+LIB_DEBUG64 = $(LIB)
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PROGRAMDATA = C:\ProgramData
+# makefile (from 'makefile', line 69)
+OBJ_DEBUG64 = $(OBJDIR_DEBUG64)\\print.o $(OBJDIR_DEBUG64)\\main.o $(OBJDIR_DEBUG64)\\filesystem.o $(OBJDIR_DEBUG64)\\file.o $(OBJDIR_DEBUG64)\\fat32.o $(OBJDIR_DEBUG64)\\fat16.o $(OBJDIR_DEBUG64)\\fat12.o $(OBJDIR_DEBUG64)\\ext2.o
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3ee46f87-074e-4ad4-80a7-7fb465d8b824-sock
+# environment
+VSCODE_CWD = C:\Program Files\Microsoft VS Code
+# environment
+PATH = C:\projects\tools\MinGW64\bin;C:\RosBE\bin;C:\RosBE\i386\bin;C:\jdk-15\bin;C:\NASM;C:\qemu;C:\gradle-6.8.1\bin;C:\Program Files\Oculus\Support\oculus-runtime;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\RosBE\bin;C:\Users\wade4\AppData\Roaming\npm;C:\Users\wade4\AppData\Local\Microsoft\WindowsApps;
+# makefile (from 'makefile', line 11)
+LD = g++.exe
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# makefile (from 'makefile', line 16)
+RESINC = 
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+USERPROFILE = C:\Users\wade4
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# makefile (from 'makefile', line 10)
+AR = ar.exe
+# environment
+VSCODE_LOG_STACK = false
+# environment
+NUMBER_OF_PROCESSORS = 12
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from 'makefile', line 19)
+LDFLAGS = 
+# makefile (from 'makefile', line 18)
+LIB = 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver
+# makefile (from 'makefile', line 58)
+LIBDIR_RELEASE64 = $(LIBDIR)
+# makefile (from 'makefile', line 54)
+INC_RELEASE64 = $(INC) -I. CFLAGS_RELEASE64 = $(CFLAGS) -O3 -w -m64
+# environment
+OCULUSBASE = C:\Program Files\Oculus\
+# automatic
+%F = $(notdir $%)
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10456_MHNHQWCMADOARXBR
+# makefile (from 'makefile', line 57)
+RCFLAGS_RELEASE64 = $(RCFLAGS)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+COMPUTERNAME = WADEFAMILYDESKT
+# environmen 
+t
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERNAME = wade4
+# environment
+PUBLIC = C:\Users\Public
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\wade4\AppData\Roaming\Code\CachedData\c3f126316369cd610563c75b1b1725e0679adfb3
+# makefile (from 'makefile', line 47)
+LIBDIR_DEBUG64 = $(LIBDIR)
+# makefile (from 'makefile', line 61)
+OBJDIR_RELEASE64 = obj\\Release64
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from 'makefile', line 43)
+INC_DEBUG64 = $(INC) -I. CFLAGS_DEBUG64 = $(CFLAGS) -w -std=c99 -m64 -g
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+LOGONSERVER = \\WADEFAMILYDESKT
+# makefile (from 'makefile', line 40)
+DEP_RELEASE32 = 
+# environment
+ONEDRIVECONSUMER = C:\Users\wade4\OneDrive
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+USERDOMAIN = WADEFAMILYDESKT
+# makefile (from 'makefile', line 34)
+RESINC_RELEASE32 = $(RESINC)
+# makefile (from 'makefile', line 63)
+OUT_RELEASE64 = bin\\Release64\\DiskImage64.exe
+# environment
+MAKELEVEL := 0
+# makefile (from 'makefile', line 46)
+RCFLAGS_DEBUG64 = $(RCFLAGS)
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from 'makefile', line 23)
+RESINC_DEBUG32 = $(RESINC)
+# makefile (from 'makefile', line 8)
+CC = gcc.exe
+# makefile (from 'makefile', line 38)
+LDFLAGS_RELEASE32 = $(LDFLAGS) -s -static-libstdc++ -static-libgcc -static -m32
+# environment
+JAVA_HOME = C:\jdk-15
+# default
+MAKE_VERSION := 3.82.90
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from 'makefile', line 37)
+LIB_RELEASE32 = $(LIB)
+# makefile (from 'makefile', line 27)
+LDFLAGS_DEBUG32 = $(LDFLAGS) -static-libstdc++ -static-libgcc -static -m32
+# makefile (from 'makefile', line 67)
+OBJ_RELEASE32 = $(OBJDIR_RELEASE32)\\print.o $(OBJDIR_RELEASE32)\\main.o $(OBJDIR_RELEASE32)\\filesystem.o $(OBJDIR_RELEASE32)\\file.o $(OBJDIR_RELEASE32)\\fat32.o $(OBJDIR_RELEASE32)\\fat16.o $(OBJDIR_RELEASE32)\\fat12.o $(OBJDIR_RELEASE32)\\ext2.o
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# automatic
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# makefile (from 'makefile', line 50)
+OBJDIR_DEBUG64 = obj\\Debug64
+# makefile (from 'makefile', line 26)
+LIB_DEBUG32 = $(LIB)
+# environment
+LOCALAPPDATA = C:\Users\wade4\AppData\Local
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make.exe
+# makefile (from 'makefile', line 14)
+INC = 
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# makefile (from 'makefile', line 65)
+OBJ_DEBUG32 = $(OBJDIR_DEBUG32)\\print.o $(OBJDIR_DEBUG32)\\main.o $(OBJDIR_DEBUG32)\\filesystem.o $(OBJDIR_DEBUG32)\\file.o $(OBJDIR_DEBUG32)\\fat32.o $(OBJDIR_DEBUG32)\\fat16.o $(OBJDIR_DEBUG32)\\fat12.o $(OBJDIR_DEBUG32)\\ext2.o
+# makefile (from 'makefile', line 17)
+LIBDIR = 
+# de 
+fault
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile (from 'makefile', line 52)
+OUT_DEBUG64 = bin\\Debug64\\DiskImage64.exe
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+# environment
+OS = Windows_NT
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\bf956df08469158e0f233effcbfc44ab-1.58.2-main-sock
+# environment
+HOMEPATH = \Users\wade4
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+PROMPT = $P$G
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# environment
+SYSTEMROOT = C:\Windows
+# automatic
++D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# automatic
++F = $(notdir $+)
+# environment
+APPDATA = C:\Users\wade4\AppData\Roaming
+# environment
+TEMP = C:\Users\wade4\AppData\Local\Temp
+# environment
+COMSPEC = C:\Windows\system32\cmd.exe
+# default
+MAKEFILES := 
+# environment
+VSCODE_BROWSER_CODE_LOADING = bypassHeatCheck
+# automatic
+<F = $(notdir $<)
+# makefile (from 'makefile', line 9)
+CXX = g++.exe
+# makefile (from 'makefile', line 41)
+OUT_RELEASE32 = bin\\Release32\\DiskImage32.exe
+# makefile (from 'makefile', line 6)
+WORKDIR = %cd%
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+SYSTEMDRIVE = C:
+# environment
+SESSIONNAME = Console
+# environment
+PROCESSOR_REVISION = 9e0a
+# makefile (from 'makefile', line 36)
+LIBDIR_RELEASE32 = $(LIBDIR)
+# makefile (from 'makefile', line 32)
+INC_RELEASE32 = $(INC) -I. CFLAGS_RELEASE32 = $(CFLAGS) -O3 -w -m32
+# default
+.RECIPEPREFIX := 
+# makefile (from 'makefile', line 62)
+DEP_RELEASE64 = 
+# makefile (from 'makefile', line 56)
+RESINC_RELEASE64 = $(RESINC)
+# environment
+LANG = C
+# environment
+PROCESSOR_LEVEL = 6
+# makefile (from 'makefile', line 25)
+LIBDIR_DEBUG32 = $(LIBDIR)
+# makefile (from 'makefile', line 21)
+INC_DEBUG32 = $(INC) -I. CFLAGS_DEBUG32 = $(CFLAGS) -w -std=c99 -m32 -g
+# environment
+VSCODE_PID = 10456
+# makefile (from 'makefile', line 35)
+RCFLAGS_RELEASE32 = $(RCFLAGS)
+# environment
+USERDOMAIN_ROAMINGPROF 
+ILE = WADEFAMILYDESKT
+# variable set hash-table stats:
+# Load=145/1024=14%, Rehash=0, Collisions=14/240=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# C:\RosBE\i386\bin (key C:/RosBE/i386/bin, mtime 1626199201): 39 files, no impossibilities.
+# C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR (key C:/Program Files/NVIDIA Corporation/NVIDIA NvDLISR, mtime 1596067878): 5 files, no impossibilities.
+# C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1602882136): 30 files, no impossibilities.
+# . (key c:/projects/linux/tools/DiskImage, mtime 1627089708): 27 files, no impossibilities.
+# C:\Windows\System32\OpenSSH\: could not be stat'd.
+# C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1596068195): 10 files, no impossibilities.
+# C:\gradle-6.8.1\bin (key C:/gradle-6.8.1/bin, mtime 1612049089): 4 files, no impossibilities.
+# C:\Program Files\Oculus\Support\oculus-runtime (key C:/Program Files/Oculus/Support/oculus-runtime, mtime 1596068208): 36 files, no impossibilities.
+# C:\Users\wade4\AppData\Roaming\npm (key C:/Users/wade4/AppData/Roaming/npm, mtime 1597687904): 15 files, no impossibilities.
+# C:\Git\cmd (key C:/Git/cmd, mtime 1596922116): 8 files, no impossibilities.
+# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1625647702): 154 files, no impossibilities.
+# C:\Users\wade4\AppData\Local\Microsoft\WindowsApps (key C:/Users/w 
+ade4/AppData/Local/Microsoft/WindowsApps, mtime 1626362752): 16 files, no impossibilities.
+# C:\Windows (key C:/Windows, mtime 1604066803): 102 files, no impossibilities.
+# C:\Program Files\nodejs\ (key C:/Program Files/nodejs/, mtime 1597148586): 11 files, no impossibilities.
+# C:\RosBE\bin (key C:/RosBE/bin, mtime 1626199201): 46 files, no impossibilities.
+# C:\Windows\system32 (key C:/Windows/system32, mtime 1626614028): 2931 files, no impossibilities.
+# C:\Program Files\Microsoft VS Code\bin (key C:/Program Files/Microsoft VS Code/bin, mtime 1626986685): 4 files, no impossibilities.
+# C:\qemu (key C:/qemu, mtime 1626547258): 126 files, no impossibilities.
+# C:\NASM (key C:/NASM, mtime 1626268088): 18 files, no impossibilities.
+# C:\projects\tools\MinGW64\bin (key C:/projects/tools/MinGW64/bin, mtime 1627068293): 64 files, no impossibilities.
+# C:\jdk-15\bin (key C:/jdk-15/bin, mtime 1626197657): 124 files, no impossibilities.
+
+# 3770 files, no impossibilities in 21 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+obj\\Debug64\\fat32.o: fat32.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 181):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c fat32.cpp -o $(OBJDIR_DEBUG64)\\fat32.o
+
+out_debug32: before_debug32 obj\\Debug32\\print.o obj\\Debug32\\main.o obj\\Debug32\\filesystem.o obj\\Debug32\\file.o obj\\Debug32\\fat32.o obj\\Debug32\\fat16.o obj\\Debug32\\fat12.o obj\\Debug32\\ext2.o
+#  Imp 
+licit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 86):
+	$(LD) $(LIBDIR_DEBUG32) -o $(OUT_DEBUG32) $(OBJ_DEBUG32)  $(LDFLAGS_DEBUG32) $(LIB_DEBUG32)
+
+# Not a target:
+file.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Debug32\\fat12.o: fat12.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 107):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c fat12.cpp -o $(OBJDIR_DEBUG32)\\fat12.o
+
+obj\\Release32\\main.o: main.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 132):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c main.cpp -o $(OBJDIR_RELEASE32)\\main.o
+
+all: debug32 release32 debug64 release64
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+obj\\Release64\\fat32.o: fat32.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 221):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c fat32.cpp -o $(OBJDIR_RELEASE64)\\fat32.o
+
+before_debug32:
+#  Phony target (prerequisi 
+te of .PHONY).
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := before_debug32
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
+#  recipe to execute (from 'makefile', line 78):
+	cmd /c if not exist bin\\Debug32 md bin\\Debug32
+	cmd /c if not exist $(OBJDIR_DEBUG32) md $(OBJDIR_DEBUG32)
+
+obj\\Release32\\fat16.o: fat16.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 144):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c fat16.cpp -o $(OBJDIR_RELEASE32)\\fat16.o
+
+.PHONY: before_debug32 after_debug32 clean_debug32 before_release32 after_release32 clean_release32 before_debug64 after_debug64 clean_debug64 before_release64 after_release64 clean_release64
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Release32\\filesystem.o: filesystem.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 135):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c filesystem.cpp -o $(OBJDIR_RELEASE32)\\filesystem.o
+
+obj\\Debug64\\main.o: main.cpp
+#  Implicit rule sea 
+rch has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 172):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c main.cpp -o $(OBJDIR_DEBUG64)\\main.o
+
+out_release32: before_release32 obj\\Release32\\print.o obj\\Release32\\main.o obj\\Release32\\filesystem.o obj\\Release32\\file.o obj\\Release32\\fat32.o obj\\Release32\\fat16.o obj\\Release32\\fat12.o obj\\Release32\\ext2.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 126):
+	$(LD) $(LIBDIR_RELEASE32) -o $(OUT_RELEASE32) $(OBJ_RELEASE32)  $(LDFLAGS_RELEASE32) $(LIB_RELEASE32)
+
+obj\\Debug64\\fat16.o: fat16.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 184):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c fat16.cpp -o $(OBJDIR_DEBUG64)\\fat16.o
+
+obj\\Debug64\\filesystem.o: filesystem.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 175):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c filesystem.cpp -o $(OBJDIR_DEBUG64)\\filesystem.o
+
+# Not a target:
+ext2.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Release64\\main.o: main.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 212):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c main.cpp -o $(OBJDIR_RELEASE64)\\main.o
+
+obj\\Release32\\fat12.o: fat12.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 147):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c fat12.cpp -o $(OBJDIR_RELEASE32)\\fat12.o
+
+debug32: before_debug32 out_debug32 after_debug32
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+before_release32:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 118):
+	cmd /c if not exist bin\\Release32 md bin\\Release32
+	cmd /c if not exist $(OBJDIR_RELEASE32) md $(OBJDIR_RELEASE32)
+
+obj\\Release64\\fat16.o: fat16.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 224):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c fat16.cpp -o $(OBJDIR_RELEASE64)\\fat16.o
+
+obj\\Debug32\\file.o: file.cpp
+#  Implicit rule search has not been done.
+#  Modific 
+ation time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 98):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c file.cpp -o $(OBJDIR_DEBUG32)\\file.o
+
+clean_debug32:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 113):
+	cmd /c del /f $(OBJ_DEBUG32) $(OUT_DEBUG32)
+	cmd /c rd bin\\Debug32
+	cmd /c rd $(OBJDIR_DEBUG32)
+
+out_debug64: before_debug64 obj\\Debug64\\print.o obj\\Debug64\\main.o obj\\Debug64\\filesystem.o obj\\Debug64\\file.o obj\\Debug64\\fat32.o obj\\Debug64\\fat16.o obj\\Debug64\\fat12.o obj\\Debug64\\ext2.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 166):
+	$(LD) $(LIBDIR_DEBUG64) -o $(OUT_DEBUG64) $(OBJ_DEBUG64)  $(LDFLAGS_DEBUG64) $(LIB_DEBUG64)
+
+obj\\Release64\\filesystem.o: filesystem.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 215):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c filesystem.cpp -o $(OBJDIR_RELEASE64)\\filesystem.o
+
+virtual_all: debug32 release32 debug64 release64
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-23 20:01:39
+#  File has been updated.
+#  Successfully updated.
+
+obj\\Debug64\\fat12.o: fat12.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 187):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c fat12.cpp -o $(OBJDIR_DEBUG64)\\fat12.o
+
+out_release64: before_release64 obj\\Release64\\print.o obj\\Release64\\main.o obj\\Release64\\filesystem.o obj\\Release64\\file.o obj\\Release64\\fat32.o obj\\Release64\\fat16.o obj\\Release64\\fat12.o obj\\Release64\\ext2.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 206):
+	$(LD) $(LIBDIR_RELEASE64) -o $(OUT_RELEASE64) $(OBJ_RELEASE64)  $(LDFLAGS_RELEASE64) $(LIB_RELEASE64)
+
+# Not a target:
+main.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+before_debug64:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not  
+been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 158):
+	cmd /c if not exist bin\\Debug64 md bin\\Debug64
+	cmd /c if not exist $(OBJDIR_DEBUG64) md $(OBJDIR_DEBUG64)
+
+after_debug32:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+obj\\Release64\\fat12.o: fat12.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 227):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c fat12.cpp -o $(OBJDIR_RELEASE64)\\fat12.o
+
+before_release64:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 198):
+	cmd /c if not exist bin\\Release64 md bin\\Release64
+	cmd /c if not exist $(OBJDIR_RELEASE64) md $(OBJDIR_RELEASE64)
+
+obj\\Debug32\\print.o: print.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 89):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c print.cpp -o $(OBJDIR_DEBUG32)\\print.o
+
+clean_release32:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 153):
+	cmd /c del /f $(OBJ_RELEASE32) $(OUT_RELEASE32)
+	cmd /c rd bin\\Release32
+	cmd /c rd $(OBJDIR_RELEASE32)
+
+# Not a target:
+fat32.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Release32\\file.o: file.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 138):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c file.cpp -o $(OBJDIR_RELEASE32)\\file.o
+
+release32: before_release32 out_release32 after_release32
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+debug64: before_debug64 out_debug64 after_debug64
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+after_release32:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+obj\\Debug64\\file.o: file.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 178):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c file.cpp -o $(OBJDIR_DEBUG64)\\file.o
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean_debug64:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (fro 
+m 'makefile', line 193):
+	cmd /c del /f $(OBJ_DEBUG64) $(OUT_DEBUG64)
+	cmd /c rd bin\\Debug64
+	cmd /c rd $(OBJDIR_DEBUG64)
+
+obj\\Release32\\print.o: print.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 129):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c print.cpp -o $(OBJDIR_RELEASE32)\\print.o
+
+clean_release64:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 233):
+	cmd /c del /f $(OBJ_RELEASE64) $(OUT_RELEASE64)
+	cmd /c rd bin\\Release64
+	cmd /c rd $(OBJDIR_RELEASE64)
+
+obj\\Debug32\\ext2.o: ext2.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 110):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c ext2.cpp -o $(OBJDIR_DEBUG32)\\ext2.o
+
+obj\\Release64\\file.o: file.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 218):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c file.cpp -o $(OBJDIR_RELEASE64)\\file.o
+
+# Not a target:
+fat16.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean: clean_debug32 clean_release32 clean_debug64 clean_release64
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+release64: before_release64 out_release64 after_release64
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+after_debug64:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+filesystem.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Debug64\\print.o: print.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 169):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c print.cpp -o $(OBJDIR_DEBUG64)\\print.o
+
+after_release64:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+obj\\Debug32\\fat32.o: fat32.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 101):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c fat32.cpp -o $(OBJDIR_DEBUG32)\\fat32.o
+
+obj\\Release64\\print.o: print.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 209):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c print.cpp -o $(OBJDIR_RELEASE64)\\print.o
+
+# Not a target:
+fat12 
+.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Release32\\ext2.o: ext2.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 150):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c ext2.cpp -o $(OBJDIR_RELEASE32)\\ext2.o
+
+# Not a target:
+print.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj\\Debug32\\main.o: main.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 92):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c main.cpp -o $(OBJDIR_DEBUG32)\\main.o
+
+obj\\Debug64\\ext2.o: ext2.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 190):
+	$(CXX) $(CFLAGS_DEBUG64) $(INC_DEBUG64) -c ext2.cpp -o $(OBJDIR_DEBUG64)\\ext2.o
+
+obj\\Debug32\\fat16.o: fat16.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 104):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c fat16.cpp -o $(OBJDIR_DEBUG32)\\fat16.o
+
+obj\\Release32\\fat32.o: fat32.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 141):
+	$(CXX) $(CFLAGS_RELEASE32) $(INC_RELEASE32) -c fat32.cpp -o $(OBJDIR_RELEASE32)\\fat32.o
+
+obj\\Debug32\\filesystem.o: filesystem.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 95):
+	$(CXX) $(CFLAGS_DEBUG32) $(INC_DEBUG32) -c filesystem.cpp -o $(OBJDIR_DEBUG32)\\filesystem.o
+
+obj\\Release64\\ext2.o: ext2.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 230):
+	$(CXX) $(CFLAGS_RELEASE64) $(INC_RELEASE64) -c ext2.cpp -o $(OBJDIR_RELEASE64)\\ext2.o
+
+# files hash-table stats:
+# Load=67/1024=7%, Rehash=0, Collisions=1/227=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 8 (7) / strings = 3742 / storage = 57439 B / avg = 15 B
+# current buf: size = 8174 B / used = 260 B / count = 13 / avg = 20 B
+# other used: total = 492 
+65 B / count = 3729 / avg = 13 B
+# other free: total = 39 B / max = 13 B / min = 2 B / avg = 5 B
+
+# strcache performance: lookups = 4013 / hit rate = 6%
+# hash-table stats:
+# Load=3742/8192=46%, Rehash=0, Collisions=1532/4013=38%
+# Finished Make data base on Fri Jul 23 20:21:55 2021
+
+ 

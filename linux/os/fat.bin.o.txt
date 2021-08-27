@@ -1,0 +1,305 @@
+
+C:\OSDEV\reactos\output-MinGW-i386\boot\freeldr\bootsect\fat.bin.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <start>:
+   0:	eb 3c                	jmp    3e <main>
+   2:	90                   	nop
+
+00000003 <OEMName>:
+   3:	46                   	inc    esi
+   4:	72 4c                	jb     52 <main+0x14>
+   6:	64 72 31             	fs jb  3a <FileSystem+0x4>
+   9:	2e 30              	xor    BYTE PTR cs:[eax],al
+
+0000000b <BytesPerSector>:
+   b:	00 02                	add    BYTE PTR [edx],al
+
+0000000d <SectsPerCluster>:
+   d:	01                 	add    DWORD PTR [ecx],eax
+
+0000000e <ReservedSectors>:
+   e:	01 00                	add    DWORD PTR [eax],eax
+
+00000010 <NumberOfFats>:
+  10:	02                 	add    ah,al
+
+00000011 <MaxRootEntries>:
+  11:	e0 00                	loopne 13 <TotalSectors>
+
+00000013 <TotalSectors>:
+  13:	40                   	inc    eax
+  14:	0b                 	or     esi,eax
+
+00000015 <MediaDescriptor>:
+  15:	f0               	lock or DWORD PTR [eax],eax
+
+00000016 <SectorsPerFat>:
+  16:	09 00                	or     DWORD PTR [eax],eax
+
+00000018 <SectorsPerTrack>:
+  18:	12 00                	adc    al,BYTE PTR [eax]
+
+0000001a <NumberOfHeads>:
+  1a:	02 00                	add    al,BYTE PTR [eax]
+
+0000001c <HiddenSectors>:
+  1c:	00 00                	add    BYTE PTR [eax],al
+	...
+
+00000020 <TotalSectorsBig>:
+  20:	00 00                	add    BYTE PTR [eax],al
+	...
+
+00000024 <BootDrive>:
+  24:	ff                 	inc    DWORD PTR [eax]
+
+00000025 <Reserved>:
+	...
+
+00000026 <ExtendSig>:
+  26:	29                 	sub    DWORD PTR [eax],eax
+
+00000027 <SerialNumber>:
+  27:	00 00                	add    BYTE PTR [eax],al
+	...
+
+0000002b <VolumeLabel>:
+  2b:	4e                   	dec    esi
+  2c:	4f                   	dec    edi
+  2d:	20 4e 41             	and    BYTE PTR [esi+0x41],cl
+  30:	4d                   	dec    ebp
+  31:	45                   	inc    ebp
+  32:	20 20                	and    BYTE PTR [eax],ah
+  34:	20 20                	and    BYTE PTR [eax],ah
+
+00000036 <FileSystem>:
+  36:	46                   	inc    esi
+  37:	41                   	inc    ecx
+  38:	54                   	push   esp
+  39:	31 32                	xor    DWORD PTR [edx],esi
+  3b:	20 20                	and    BYTE PTR [eax],ah
+  3d:	20                 	and    BYTE PTR [ecx],dh
+
+0000003e <main>:
+  3e:	31 c0                	xor    eax,eax
+  40:	8e d0                	mov    ss,eax
+  42:	bd 00 7c bc f0       	mov    ebp,0xf0bc7c00
+  47:	7b 8e                	jnp    ffffffd7 <BootSectorStackTop+0xffff83e7>
+  49:	d8 8e c0 80 be 24    	fmul   DWORD PTR [esi+0x24be80c0]
+  4f:	00 ff                	add    bh,bh
+  51:	75 04                	jne    57 <GetDriveParameters>
+  53:	88 96 24 00      	mov    BYTE PTR [esi+0x8b40024],dl
+
+00000057 <GetDriveParameters>:
+  57:	b4 08                	mov    ah,0x8
+  59:	8a 96 24 00 cd 13    	mov    dl,BYTE PTR [esi+0x13cd0024]
+  5f:	73 05                	jae    66 <CalcDriveSize>
+  61:	b9 ff ff 88 ce       	mov    ecx,0xce88ffff
+
+00000066 <CalcDriveSize>:
+  66:	88 eb                	mov    bl,ch
+  68:	88 cf                	mov    bh,cl
+  6a:	c0 ef 06             	shr    bh,0x6
+  6d:	80 e1 3f             	and    cl,0x3f
+  70:	66 0f b6 c6          	movzx  ax,dh
+  74:	66 0f b7 db          	movzx  bx,bx
+  78:	66 0f b6 c9          	movzx  cx,cl
+  7c:	66 40                	inc    ax
+  7e:	66 43                	inc    bx
+  80:	66 f7 e1             	mul    cx
+  83:	66 f7 e3             	mul    bx
+  86:	66 89 46 f8          	mov    WORD PTR [esi-0x8],ax
+  8a:	31 c0                	xor    eax,eax
+  8c:	31 c9                	xor    ecx,ecx
+  8e:	8a 86 10 00 f7 a6    	mov    al,BYTE PTR [esi-0x5908fff0]
+  94:	16                   	push   ss
+  95:	00 03                	add    BYTE PTR [ebx],al
+  97:	86 1c 00             	xchg   BYTE PTR [eax+eax*1],bl
+  9a:	13 96 1e 00 03 86    	adc    edx,DWORD PTR [esi-0x79fcffe2]
+  a0:	0e                   	push   cs
+  a1:	00 11                	add    BYTE PTR [ecx],dl
+  a3:	ca 89 46             	retf   0x4689
+  a6:	fc                   	cld    
+  a7:	89 56 fe             	mov    DWORD PTR [esi-0x2],edx
+  aa:	8b b6 11 00 60 31    	mov    esi,DWORD PTR [esi+0x31600011]
+  b0:	d2 b8 20 00 f7 e6    	sar    BYTE PTR [eax-0x1908ffe0],cl
+  b6:	8b 9e 0b 00 01 d8    	mov    ebx,DWORD PTR [esi-0x27fefff5]
+  bc:	48                   	dec    eax
+  bd:	f7 f3                	div    ebx
+  bf:	01 46 fc             	add    DWORD PTR [esi-0x4],eax
+  c2:	11 4e fe             	adc    DWORD PTR [esi-0x2],ecx
+  c5:	61                   	popa   
+  c6:	bb e0 07 8e c3       	mov    ebx,0xc38e07e0
+  cb:	31 db                	xor    ebx,ebx
+  cd:	31 c9                	xor    ecx,ecx
+  cf:	41                   	inc    ecx
+  d0:	31 ff                	xor    edi,edi
+  d2:	06                   	push   es
+  d3:	e8 75 00 07        	call   2607014d <BootSectorStackTop+0x2606855d>
+
+000000d7 <SearchRootDirSector>:
+  d7:	26 38 2d 74 3a 60 b1 	cmp    BYTE PTR es:0xb1603a74,ch
+  de:	0b be e6 01 f3 a6    	or     edi,DWORD PTR [esi-0x590cfe1a]
+  e4:	61                   	popa   
+  e5:	74 0e                	je     f5 <FoundFreeLoader>
+  e7:	4e                   	dec    esi
+  e8:	74 2c                	je     116 <ErrBoot>
+  ea:	83 c7 20             	add    edi,0x20
+  ed:	81 ff 00 02 72 e4    	cmp    edi,0xe4720200
+  f3:	eb d1                	jmp    c6 <CalcDriveSize+0x60>
+
+000000f5 <FoundFreeLoader>:
+  f5:	26 8b 45 1a          	mov    eax,DWORD PTR es:[ebp+0x1a]
+  f9:	50                   	push   eax
+  fa:	68 80 0f 07 e8       	push   0xe8070f80
+  ff:	38 00                	cmp    BYTE PTR [eax],al
+ 101:	58                   	pop    eax
+ 102:	c7 46 f6 4b 01 c7 46 	mov    DWORD PTR [esi-0xa],0x46c7014b
+ 109:	f4                   	hlt    
+ 10a:	39 01                	cmp    DWORD PTR [ecx],eax
+ 10c:	c7 46 f2 22 01 ea 03 	mov    DWORD PTR [esi-0xe],0x3ea0122
+ 113:	f8                   	clc    
+	...
+
+00000116 <ErrBoot>:
+ 116:	be d6 01 e8 06       	mov    esi,0x6e801d6
+	...
+
+0000011c <Reboot>:
+ 11c:	31 c0                	xor    eax,eax
+ 11e:	cd 16                	int    0x16
+ 120:	cd 19                	int    0x19
+
+00000122 <PutChars>:
+ 122:	ac                   	lods   al,BYTE PTR ds:[esi]
+ 123:	08 c0                	or     al,al
+ 125:	74 09                	je     130 <Done>
+ 127:	b4 0e                	mov    ah,0xe
+ 129:	bb 07 00 cd 10       	mov    ebx,0x10cd0007
+ 12e:	eb f2                	jmp    122 <PutChars>
+
+00000130 <Done>:
+ 130:	c3                   	ret    
+
+00000131 <BadBoot>:
+ 131:	be c9 01 e8 eb       	mov    esi,0xebe801c9
+ 136:	ff                   	(bad)  
+ 137:	eb e3                	jmp    11c <Reboot>
+
+00000139 <ReadCluster>:
+ 139:	48                   	dec    eax
+ 13a:	48                   	dec    eax
+ 13b:	30 ed                	xor    ch,ch
+ 13d:	8a 8e 0d 00 f7 e1    	mov    cl,BYTE PTR [esi-0x1e08fff3]
+ 143:	03 46 fc             	add    eax,DWORD PTR [esi-0x4]
+ 146:	13 56 fe             	adc    edx,DWORD PTR [esi-0x2]
+ 149:	31 db                	xor    ebx,ebx
+
+0000014b <ReadSectors>:
+ 14b:	60                   	pusha  
+ 14c:	49                   	dec    ecx
+ 14d:	01 c8                	add    eax,ecx
+ 14f:	83 d2 00             	adc    edx,0x0
+ 152:	3b 56 fa             	cmp    edx,DWORD PTR [esi-0x6]
+ 155:	77 07                	ja     15e <ReadSectorsLBA>
+ 157:	72 33                	jb     18c <ReadSectorsCHS>
+ 159:	3b 46 f8             	cmp    eax,DWORD PTR [esi-0x8]
+ 15c:	76 2e                	jbe    18c <ReadSectorsCHS>
+
+0000015e <ReadSectorsLBA>:
+ 15e:	61                   	popa   
+
+0000015f <ReadSectorsLBALoop>:
+ 15f:	60                   	pusha  
+ 160:	6a 00                	push   0x0
+ 162:	6a 00                	push   0x0
+ 164:	52                   	push   edx
+ 165:	50                   	push   eax
+ 166:	06                   	push   es
+ 167:	53                   	push   ebx
+ 168:	6a 01                	push   0x1
+ 16a:	6a 10                	push   0x10
+ 16c:	89 e6                	mov    esi,esp
+ 16e:	8a 96 24 00 b4 42    	mov    dl,BYTE PTR [esi+0x42b40024]
+ 174:	cd 13                	int    0x13
+ 176:	72 b9                	jb     131 <BadBoot>
+ 178:	83 c4 10             	add    esp,0x10
+ 17b:	61                   	popa   
+ 17c:	40                   	inc    eax
+ 17d:	83 d2 00             	adc    edx,0x0
+ 180:	53                   	push   ebx
+ 181:	8c c3                	mov    ebx,es
+ 183:	83 c3 20             	add    ebx,0x20
+ 186:	8e c3                	mov    es,ebx
+ 188:	5b                   	pop    ebx
+ 189:	e2 d4                	loop   15f <ReadSectorsLBALoop>
+ 18b:	c3                   	ret    
+
+0000018c <ReadSectorsCHS>:
+ 18c:	61                   	popa   
+
+0000018d <ReadSectorsCHSLoop>:
+ 18d:	60                   	pusha  
+ 18e:	91                   	xchg   ecx,eax
+ 18f:	92                   	xchg   edx,eax
+ 190:	31 d2                	xor    edx,edx
+ 192:	f7 b6 18 00 91 f7    	div    DWORD PTR [esi-0x86effe8]
+ 198:	b6 18                	mov    dh,0x18
+ 19a:	00 42 87             	add    BYTE PTR [edx-0x79],al
+ 19d:	d1 f7                	shl    edi,1
+ 19f:	b6 1a                	mov    dh,0x1a
+ 1a1:	00 88 d6 8a 96 24    	add    BYTE PTR [eax+0x24968ad6],cl
+ 1a7:	00 88 c5 c0 cc 02    	add    BYTE PTR [eax+0x2ccc0c5],cl
+ 1ad:	08 e1                	or     cl,ah
+ 1af:	b8 01 02 cd 13       	mov    eax,0x13cd0201
+ 1b4:	0f 82 79 ff 61 40    	jb     40620133 <BootSectorStackTop+0x40618543>
+ 1ba:	75 01                	jne    1bd <NoCarryCHS>
+ 1bc:	42                   	inc    edx
+
+000001bd <NoCarryCHS>:
+ 1bd:	53                   	push   ebx
+ 1be:	8c c3                	mov    ebx,es
+ 1c0:	83 c3 20             	add    ebx,0x20
+ 1c3:	8e c3                	mov    es,ebx
+ 1c5:	5b                   	pop    ebx
+ 1c6:	e2 c5                	loop   18d <ReadSectorsCHSLoop>
+ 1c8:	c3                   	ret    
+
+000001c9 <msgDiskError>:
+ 1c9:	44                   	inc    esp
+ 1ca:	69 73 6b 20 65 72 72 	imul   esi,DWORD PTR [ebx+0x6b],0x72726520
+ 1d1:	6f                   	outs   dx,DWORD PTR ds:[esi]
+ 1d2:	72 0d                	jb     1e1 <msgFreeLdr+0xb>
+ 1d4:	0a 00                	or     al,BYTE PTR [eax]
+
+000001d6 <msgFreeLdr>:
+ 1d6:	4c                   	dec    esp
+ 1d7:	64 72 20             	fs jb  1fa <filename+0x14>
+ 1da:	6e                   	outs   dx,BYTE PTR ds:[esi]
+ 1db:	6f                   	outs   dx,DWORD PTR ds:[esi]
+ 1dc:	74 20                	je     1fe <BootSignature>
+ 1de:	66 6f                	outs   dx,WORD PTR ds:[esi]
+ 1e0:	75 6e                	jne    250 <BootSignature+0x52>
+ 1e2:	64 0d 0a 00      	fs or  eax,0x5246000a
+
+000001e6 <filename>:
+ 1e6:	46                   	inc    esi
+ 1e7:	52                   	push   edx
+ 1e8:	45                   	inc    ebp
+ 1e9:	45                   	inc    ebp
+ 1ea:	4c                   	dec    esp
+ 1eb:	44                   	inc    esp
+ 1ec:	52                   	push   edx
+ 1ed:	20 53 59             	and    BYTE PTR [ebx+0x59],dl
+ 1f0:	53                   	push   ebx
+	...
+
+000001fd <BootPartition>:
+	...
+
+000001fe <BootSignature>:
+ 1fe:	55                   	push   ebp
+ 1ff:	aa                   	stos   BYTE PTR es:[edi],al

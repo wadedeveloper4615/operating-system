@@ -1,0 +1,6 @@
+{"dependencies":[
+	"perception",
+	"libcxx",
+	"musl",
+	"Nano SVG"
+]}

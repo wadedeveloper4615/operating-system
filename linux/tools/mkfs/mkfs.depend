@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1627910665 source:c:\projects\linux\tools\mkfs\main.c
+	<fcntl.h>
+	<signal.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/time.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<ctype.h>
+	<stdint.h>
+	<getopt.h>
+	"endian_compat.h"
+	"msdos_fs.h"
+	"device_info.h"
+
+1627907394 c:\projects\linux\tools\mkfs\endian_compat.h
+
+1627909418 c:\projects\linux\tools\mkfs\msdos_fs.h
+	<stdint.h>
+
+1627909418 c:\projects\linux\tools\mkfs\device_info.h
+

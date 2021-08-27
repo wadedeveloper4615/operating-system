@@ -1,0 +1,56 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make.exe: Entering directory 'c:/projects/linux/tools/DiskImage'
+cmd /c if not exist bin\\Debug32 md bin\\Debug32
+cmd /c if not exist obj\\Debug32 md obj\\Debug32
+ 
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c print.cpp -o obj\\Debug32\\print.o
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c main.cpp -o obj\\Debug32\\main.o
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c filesystem.cpp -o obj\\Debug32\\filesystem.o
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c file.cpp -o obj\\Debug32\\file.o
+ 
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c fat32.cpp -o obj\\Debug32\\fat32.o
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c fat16.cpp -o obj\\Debug32\\fat16.o
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c fat12.cpp -o obj\\Debug32\\fat12.o
+ 
+g++.exe   -I. CFLAGS_DEBUG32 = -Wall -fexceptions -w -std=c99 -m32 -g -c ext2.cpp -o obj\\Debug32\\ext2.o
+g++.exe  -o bin\\Debug32\\DiskImage32.exe obj\\Debug32\\print.o obj\\Debug32\\main.o obj\\Debug32\\filesystem.o obj\\Debug32\\file.o obj\\Debug32\\fat32.o obj\\Debug32\\fat16.o obj\\Debug32\\fat12.o obj\\Debug32\\ext2.o   -static-libstdc++ -static-libgcc -static -m32 
+ 
+cmd /c if not exist bin\\Release32 md bin\\Release32
+cmd /c if not exist obj\\Release32 md obj\\Release32
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c print.cpp -o obj\\Release32\\print.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c main.cpp -o obj\\Release32\\main.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c filesystem.cpp -o obj\\Release32\\filesystem.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c file.cpp -o obj\\Release32\\file.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c fat32.cpp -o obj\\Release32\\fat32.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c fat16.cpp -o obj\\Release32\\fat16.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c fat12.cpp -o obj\\Release32\\fat12.o
+g++.exe   -I. CFLAGS_RELEASE32 = -Wall -fexceptions -O3 -w -m32 -c ext2.cpp -o obj\\Release32\\ext2.o
+g++.exe  -o bin\\Release32\\DiskImage32.exe obj\\Release32\\print.o obj\\Release32\\main.o obj\\Release32\\filesystem.o obj\\Release32\\file.o obj\\Release32\\fat32.o obj\\Release32\\fat16.o obj\\Release32\\fat12.o obj\\Release32\\ext2.o   -s -static-libstdc++ -static-libgcc -static -m32 
+ 
+cmd /c if not exist bin\\Debug64 md bin\\Debug64
+cmd /c if not exist obj\\Debug64 md obj\\Debug64
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c print.cpp -o obj\\Debug64\\print.o
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c main.cpp -o obj\\Debug64\\main.o
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c filesystem.cpp -o obj\\Debug64\\filesystem.o
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c file.cpp -o obj\\Debug64\\file.o
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c fat32.cpp -o obj\\Debug64\\fat32.o
+ 
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c fat16.cpp -o obj\\Debug64\\fat16.o
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c fat12.cpp -o obj\\Debug64\\fat12.o
+g++.exe   -I. CFLAGS_DEBUG64 = -Wall -fexceptions -w -std=c99 -m64 -g -c ext2.cpp -o obj\\Debug64\\ext2.o
+g++.exe  -o bin\\Debug64\\DiskImage64.exe obj\\Debug64\\print.o obj\\Debug64\\main.o obj\\Debug64\\filesystem.o obj\\Debug64\\file.o obj\\Debug64\\fat32.o obj\\Debug64\\fat16.o obj\\Debug64\\fat12.o obj\\Debug64\\ext2.o   -static-libstdc++ -static-libgcc -static -m64 
+ 
+cmd /c if not exist bin\\Release64 md bin\\Release64
+cmd /c if not exist obj\\Release64 md obj\\Release64
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c print.cpp -o obj\\Release64\\print.o
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c main.cpp -o obj\\Release64\\main.o
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c filesystem.cpp -o obj\\Release64\\filesystem.o
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c file.cpp -o obj\\Release64\\file.o
+ 
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c fat32.cpp -o obj\\Release64\\fat32.o
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c fat16.cpp -o obj\\Release64\\fat16.o
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c fat12.cpp -o obj\\Release64\\fat12.o
+g++.exe   -I. CFLAGS_RELEASE64 = -Wall -fexceptions -O3 -w -m64 -c ext2.cpp -o obj\\Release64\\ext2.o
+g++.exe  -o bin\\Release64\\DiskImage64.exe obj\\Release64\\print.o obj\\Release64\\main.o obj\\Release64\\filesystem.o obj\\Release64\\file.o obj\\Release64\\fat32.o obj\\Release64\\fat16.o obj\\Release64\\fat12.o obj\\Release64\\ext2.o   -s -static-libstdc++ -static-libgcc -static -m64 
+make.exe: Leaving directory 'c:/projects/linux/tools/DiskImage'
+ 

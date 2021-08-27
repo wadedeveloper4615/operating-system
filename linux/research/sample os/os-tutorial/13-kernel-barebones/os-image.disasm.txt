@@ -1,0 +1,339 @@
+00000000  8816              mov [esi],dl
+00000002  5C                pop esp
+00000003  7DBD              jnl 0xffffffc2
+00000005  009089ECBB5D      add [eax+0x5dbbec89],dl
+0000000B  7DE8              jnl 0xfffffff5
+0000000D  0B00              or eax,[eax]
+0000000F  E81A00E820        call 0x20e8002e
+00000014  01E8              add eax,ebp
+00000016  EE                out dx,al
+00000017  00EB              add bl,ch
+00000019  FE                db 0xfe
+0000001A  60                pusha
+0000001B  8A07              mov al,[edi]
+0000001D  3C00              cmp al,0x0
+0000001F  7409              jz 0x2a
+00000021  B40E              mov ah,0xe
+00000023  CD10              int 0x10
+00000025  83C301            add ebx,byte +0x1
+00000028  EBF1              jmp short 0x1b
+0000002A  61                popa
+0000002B  C3                ret
+0000002C  60                pusha
+0000002D  B40E              mov ah,0xe
+0000002F  B00A              mov al,0xa
+00000031  CD10              int 0x10
+00000033  B00D              mov al,0xd
+00000035  CD10              int 0x10
+00000037  61                popa
+00000038  C3                ret
+00000039  60                pusha
+0000003A  B9000083F9        mov ecx,0xf9830000
+0000003F  0474              add al,0x74
+00000041  1C89              sbb al,0x89
+00000043  D083E00F0430      rol byte [ebx+0x30040fe0],1
+00000049  3C39              cmp al,0x39
+0000004B  7E02              jng 0x4f
+0000004D  0407              add al,0x7
+0000004F  BB6B7C29CB        mov ebx,0xcb297c6b
+00000054  8807              mov [edi],al
+00000056  C1CA04            ror edx,byte 0x4
+00000059  83C101            add ecx,byte +0x1
+0000005C  EBDF              jmp short 0x3d
+0000005E  BB667CE8B6        mov ebx,0xb6e87c66
+00000063  FF61C3            jmp [ecx-0x3d]
+00000066  307830            xor [eax+0x30],bh
+00000069  3030              xor [eax],dh
+0000006B  3000              xor [eax],al
+0000006D  60                pusha
+0000006E  52                push edx
+0000006F  B402              mov ah,0x2
+00000071  88F0              mov al,dh
+00000073  B102              mov cl,0x2
+00000075  B500              mov ch,0x0
+00000077  B600              mov dh,0x0
+00000079  CD13              int 0x13
+0000007B  7207              jc 0x84
+0000007D  5A                pop edx
+0000007E  38F0              cmp al,dh
+00000080  7512              jnz 0x94
+00000082  61                popa
+00000083  C3                ret
+00000084  BB9C7CE890        mov ebx,0x90e87c9c
+00000089  FF                db 0xff
+0000008A  E89FFF88E6        call 0xe689002e
+0000008F  E8A7FFEB06        call 0x6ec003b
+00000094  BBAC7CE880        mov ebx,0x80e87cac
+00000099  FF                db 0xff
+0000009A  EBFE              jmp short 0x9a
+0000009C  44                inc esp
+0000009D  69736B20726561    imul esi,[ebx+0x6b],dword 0x61657220
+000000A4  64206572          and [fs:ebp+0x72],ah
+000000A8  726F              jc 0x119
+000000AA  7200              jc 0xac
+000000AC  49                dec ecx
+000000AD  6E                outsb
+000000AE  636F72            arpl [edi+0x72],bp
+000000B1  7265              jc 0x118
+000000B3  6374206E          arpl [eax+0x6e],si
+000000B7  756D              jnz 0x126
+000000B9  626572            bound esp,[ebp+0x72]
+000000BC  206F66            and [edi+0x66],ch
+000000BF  207365            and [ebx+0x65],dh
+000000C2  63746F72          arpl [edi+ebp*2+0x72],si
+000000C6  7320              jnc 0xe8
+000000C8  7265              jc 0x12f
+000000CA  61                popa
+000000CB  640000            add [fs:eax],al
+000000CE  0000              add [eax],al
+000000D0  0000              add [eax],al
+000000D2  0000              add [eax],al
+000000D4  00FF              add bh,bh
+000000D6  FF00              inc dword [eax]
+000000D8  0000              add [eax],al
+000000DA  9ACF00FFFF0000    call 0x0:0xffff00cf
+000000E1  0092CF001700      add [edx+0x1700cf],dl
+000000E7  CD7C              int 0x7c
+000000E9  0000              add [eax],al
+000000EB  60                pusha
+000000EC  BA00800B00        mov edx,0xb8000
+000000F1  8A03              mov al,[ebx]
+000000F3  B40F              mov ah,0xf
+000000F5  3C00              cmp al,0x0
+000000F7  740B              jz 0x104
+000000F9  668902            mov [edx],ax
+000000FC  83C301            add ebx,byte +0x1
+000000FF  83C202            add edx,byte +0x2
+00000102  EBED              jmp short 0xf1
+00000104  61                popa
+00000105  C3                ret
+00000106  FA                cli
+00000107  0F0116            lgdt [esi]
+0000010A  E57C              in eax,0x7c
+0000010C  0F20C0            mov eax,cr0
+0000010F  6683C801          or ax,byte +0x1
+00000113  0F22C0            mov cr0,eax
+00000116  EA1B7D080066B8    jmp 0xb866:0x87d1b
+0000011D  1000              adc [eax],al
+0000011F  8ED8              mov ds,eax
+00000121  8ED0              mov ss,eax
+00000123  8EC0              mov es,eax
+00000125  8EE0              mov fs,eax
+00000127  8EE8              mov gs,eax
+00000129  BD00000900        mov ebp,0x90000
+0000012E  89EC              mov esp,ebp
+00000130  E816000000        call 0x14b
+00000135  BB997DE8DF        mov ebx,0xdfe87d99
+0000013A  FE                db 0xfe
+0000013B  E8EEFEBB00        call 0xbc002e
+00000140  10B6028A165C      adc [esi+0x5c168a02],dh
+00000146  7DE8              jnl 0x130
+00000148  23FF              and edi,edi
+0000014A  C3                ret
+0000014B  BB797D0000        mov ebx,0x7d79
+00000150  E896FFFFFF        call 0xeb
+00000155  E8A692FFFF        call 0xffff9400
+0000015A  EBFE              jmp short 0x15a
+0000015C  005374            add [ebx+0x74],dl
+0000015F  61                popa
+00000160  7274              jc 0x1d6
+00000162  656420696E        and [fs:ecx+0x6e],ch
+00000167  2031              and [ecx],dh
+00000169  362D62697420      ss sub eax,0x20746962
+0000016F  52                push edx
+00000170  6561              gs popa
+00000172  6C                insb
+00000173  204D6F            and [ebp+0x6f],cl
+00000176  6465004C616E      add [gs:ecx+0x6e],cl
+0000017C  64656420696E      and [fs:ecx+0x6e],ch
+00000182  2033              and [ebx],dh
+00000184  322D62697420      xor ch,[dword 0x20746962]
+0000018A  50                push eax
+0000018B  726F              jc 0x1fc
+0000018D  7465              jz 0x1f4
+0000018F  63746564          arpl [ebp+0x64],si
+00000193  204D6F            and [ebp+0x6f],cl
+00000196  6465004C6F61      add [gs:edi+ebp*2+0x61],cl
+0000019C  64696E67206B6572  imul ebp,[fs:esi+0x67],dword 0x72656b20
+000001A4  6E                outsb
+000001A5  656C              gs insb
+000001A7  20696E            and [ecx+0x6e],ch
+000001AA  746F              jz 0x21b
+000001AC  206D65            and [ebp+0x65],ch
+000001AF  6D                insd
+000001B0  6F                outsd
+000001B1  7279              jc 0x22c
+000001B3  0000              add [eax],al
+000001B5  0000              add [eax],al
+000001B7  0000              add [eax],al
+000001B9  0000              add [eax],al
+000001BB  0000              add [eax],al
+000001BD  0000              add [eax],al
+000001BF  0000              add [eax],al
+000001C1  0000              add [eax],al
+000001C3  0000              add [eax],al
+000001C5  0000              add [eax],al
+000001C7  0000              add [eax],al
+000001C9  0000              add [eax],al
+000001CB  0000              add [eax],al
+000001CD  0000              add [eax],al
+000001CF  0000              add [eax],al
+000001D1  0000              add [eax],al
+000001D3  0000              add [eax],al
+000001D5  0000              add [eax],al
+000001D7  0000              add [eax],al
+000001D9  0000              add [eax],al
+000001DB  0000              add [eax],al
+000001DD  0000              add [eax],al
+000001DF  0000              add [eax],al
+000001E1  0000              add [eax],al
+000001E3  0000              add [eax],al
+000001E5  0000              add [eax],al
+000001E7  0000              add [eax],al
+000001E9  0000              add [eax],al
+000001EB  0000              add [eax],al
+000001ED  0000              add [eax],al
+000001EF  0000              add [eax],al
+000001F1  0000              add [eax],al
+000001F3  0000              add [eax],al
+000001F5  0000              add [eax],al
+000001F7  0000              add [eax],al
+000001F9  0000              add [eax],al
+000001FB  0000              add [eax],al
+000001FD  0055AA            add [ebp-0x56],dl
+00000200  55                push ebp
+00000201  89E5              mov ebp,esp
+00000203  83EC38            sub esp,byte +0x38
+00000206  C745F400800B00    mov dword [ebp-0xc],0xb8000
+0000020D  8B45F4            mov eax,[ebp-0xc]
+00000210  890424            mov [esp],eax
+00000213  E848000000        call 0x260
+00000218  B801000000        mov eax,0x1
+0000021D  0FBED0            movsx edx,al
+00000220  B802000000        mov eax,0x2
+00000225  0FBEC0            movsx eax,al
+00000228  89542404          mov [esp+0x4],edx
+0000022C  890424            mov [esp],eax
+0000022F  E8E8000000        call 0x31c
+00000234  0FBEC0            movsx eax,al
+00000237  C744241000000000  mov dword [esp+0x10],0x0
+0000023F  C744240C00000000  mov dword [esp+0xc],0x0
+00000247  89442408          mov [esp+0x8],eax
+0000024B  C744240457000000  mov dword [esp+0x4],0x57
+00000253  8B45F4            mov eax,[ebp-0xc]
+00000256  890424            mov [esp],eax
+00000259  E8DC000000        call 0x33a
+0000025E  EBFE              jmp short 0x25e
+00000260  55                push ebp
+00000261  89E5              mov ebp,esp
+00000263  53                push ebx
+00000264  83EC24            sub esp,byte +0x24
+00000267  C745F000000000    mov dword [ebp-0x10],0x0
+0000026E  EB6C              jmp short 0x2dc
+00000270  C745F400000000    mov dword [ebp-0xc],0x0
+00000277  EB55              jmp short 0x2ce
+00000279  B850000000        mov eax,0x50
+0000027E  0FAF45F0          imul eax,[ebp-0x10]
+00000282  89C2              mov edx,eax
+00000284  8B45F4            mov eax,[ebp-0xc]
+00000287  01D0              add eax,edx
+00000289  8945EC            mov [ebp-0x14],eax
+0000028C  8B45EC            mov eax,[ebp-0x14]
+0000028F  8D1400            lea edx,[eax+eax]
+00000292  8B4508            mov eax,[ebp+0x8]
+00000295  8D1C02            lea ebx,[edx+eax]
+00000298  B801000000        mov eax,0x1
+0000029D  0FBED0            movsx edx,al
+000002A0  B802000000        mov eax,0x2
+000002A5  0FBEC0            movsx eax,al
+000002A8  89542404          mov [esp+0x4],edx
+000002AC  890424            mov [esp],eax
+000002AF  E868000000        call 0x31c
+000002B4  0FBEC0            movsx eax,al
+000002B7  89442404          mov [esp+0x4],eax
+000002BB  C7042420000000    mov dword [esp],0x20
+000002C2  E825000000        call 0x2ec
+000002C7  668903            mov [ebx],ax
+000002CA  8345F401          add dword [ebp-0xc],byte +0x1
+000002CE  B850000000        mov eax,0x50
+000002D3  3945F4            cmp [ebp-0xc],eax
+000002D6  7CA1              jl 0x279
+000002D8  8345F001          add dword [ebp-0x10],byte +0x1
+000002DC  B818000000        mov eax,0x18
+000002E1  3945F0            cmp [ebp-0x10],eax
+000002E4  7C8A              jl 0x270
+000002E6  83C424            add esp,byte +0x24
+000002E9  5B                pop ebx
+000002EA  5D                pop ebp
+000002EB  C3                ret
+000002EC  55                push ebp
+000002ED  89E5              mov ebp,esp
+000002EF  83EC18            sub esp,byte +0x18
+000002F2  8B5508            mov edx,[ebp+0x8]
+000002F5  8B450C            mov eax,[ebp+0xc]
+000002F8  8855EC            mov [ebp-0x14],dl
+000002FB  8845E8            mov [ebp-0x18],al
+000002FE  0FB645EC          movzx eax,byte [ebp-0x14]
+00000302  8845FF            mov [ebp-0x1],al
+00000305  0FB645E8          movzx eax,byte [ebp-0x18]
+00000309  8845FE            mov [ebp-0x2],al
+0000030C  660FBE45FF        movsx ax,[ebp-0x1]
+00000311  0FBE55FE          movsx edx,byte [ebp-0x2]
+00000315  C1E208            shl edx,byte 0x8
+00000318  09D0              or eax,edx
+0000031A  C9                leave
+0000031B  C3                ret
+0000031C  55                push ebp
+0000031D  89E5              mov ebp,esp
+0000031F  83EC08            sub esp,byte +0x8
+00000322  8B5508            mov edx,[ebp+0x8]
+00000325  8B450C            mov eax,[ebp+0xc]
+00000328  8855FC            mov [ebp-0x4],dl
+0000032B  8845F8            mov [ebp-0x8],al
+0000032E  0FBE45F8          movsx eax,byte [ebp-0x8]
+00000332  C1E004            shl eax,byte 0x4
+00000335  0A45FC            or al,[ebp-0x4]
+00000338  C9                leave
+00000339  C3                ret
+0000033A  55                push ebp
+0000033B  89E5              mov ebp,esp
+0000033D  53                push ebx
+0000033E  83EC20            sub esp,byte +0x20
+00000341  8B550C            mov edx,[ebp+0xc]
+00000344  8B4510            mov eax,[ebp+0x10]
+00000347  8855E8            mov [ebp-0x18],dl
+0000034A  8845E4            mov [ebp-0x1c],al
+0000034D  B850000000        mov eax,0x50
+00000352  0FAF4518          imul eax,[ebp+0x18]
+00000356  89C2              mov edx,eax
+00000358  8B4514            mov eax,[ebp+0x14]
+0000035B  01D0              add eax,edx
+0000035D  8945F8            mov [ebp-0x8],eax
+00000360  8B45F8            mov eax,[ebp-0x8]
+00000363  8D1400            lea edx,[eax+eax]
+00000366  8B4508            mov eax,[ebp+0x8]
+00000369  8D1C02            lea ebx,[edx+eax]
+0000036C  0FBE55E4          movsx edx,byte [ebp-0x1c]
+00000370  0FBE45E8          movsx eax,byte [ebp-0x18]
+00000374  89542404          mov [esp+0x4],edx
+00000378  890424            mov [esp],eax
+0000037B  E86CFFFFFF        call 0x2ec
+00000380  668903            mov [ebx],ax
+00000383  83C420            add esp,byte +0x20
+00000386  5B                pop ebx
+00000387  5D                pop ebp
+00000388  C3                ret
+00000389  90                nop
+0000038A  90                nop
+0000038B  90                nop
+0000038C  FF                db 0xff
+0000038D  FF                db 0xff
+0000038E  FF                db 0xff
+0000038F  FF00              inc dword [eax]
+00000391  0000              add [eax],al
+00000393  00FF              add bh,bh
+00000395  FF                db 0xff
+00000396  FF                db 0xff
+00000397  FF00              inc dword [eax]
+00000399  0000              add [eax],al
+0000039B  00                db 0x00

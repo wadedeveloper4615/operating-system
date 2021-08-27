@@ -1,0 +1,293 @@
+
+entry.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <_cmdline>:
+   0:	66           	data16 mov ax,0x10
+
+00000001 <_RealEntryPoint>:
+   1:	66 b8 10 00          	mov    ax,0x10
+   5:	8e d8                	mov    ds,eax
+   7:	8e c0                	mov    es,eax
+   9:	8e e0                	mov    fs,eax
+   b:	8e e8                	mov    gs,eax
+   d:	8e d0                	mov    ss,eax
+   f:	8b 25 28 01 00 00    	mov    esp,DWORD PTR ds:0x128
+  15:	0f 01 1d 5a 01 00 00 	lidtd  ds:0x15a
+  1c:	ff 25 22 00 00 00    	jmp    DWORD PTR ds:0x22
+
+00000022 <ContinueAddress>:
+  22:	26 00 00             	add    BYTE PTR es:[eax],al
+	...
+
+00000026 <_FrldrStartup>:
+  26:	88 15 60 01 00 00    	mov    BYTE PTR ds:0x160,dl
+  2c:	31 c0                	xor    eax,eax
+  2e:	88 f0                	mov    al,dh
+  30:	a3 61 01 00 00       	mov    ds:0x161,eax
+  35:	a1 00 6f 00 00       	mov    eax,ds:0x6f00
+  3a:	a3 1f 01 00 00       	mov    ds:0x11f,eax
+  3f:	31 c0                	xor    eax,eax
+  41:	bf 00 00 00 00       	mov    edi,0x0
+  46:	b9 03 00 00 00       	mov    ecx,0x3
+  4b:	29 f9                	sub    ecx,edi
+  4d:	c1 e9 02             	shr    ecx,0x2
+  50:	f3 ab                	rep stos DWORD PTR es:[edi],eax
+  52:	e8 00 00 00 00       	call   57 <_FrldrStartup+0x31>
+  57:	b8 00 00 00 00       	mov    eax,0x0
+  5c:	50                   	push   eax
+  5d:	e8 00 00 00 00       	call   62 <stop>
+
+00000062 <stop>:
+  62:	eb fe                	jmp    62 <stop>
+  64:	90                   	nop
+  65:	90                   	nop
+
+00000066 <_Reboot>:
+  66:	e8 00 00 00 00       	call   6b <_Reboot+0x5>
+  6b:	66 bb 01 00          	mov    bx,0x1
+  6f:	e9 96 00 00 00       	jmp    10a <SwitchToReal>
+
+00000074 <_Relocator16Boot>:
+  74:	8b 74 24 04          	mov    esi,DWORD PTR [esp+0x4]
+  78:	bf 08 6f 00 00       	mov    edi,0x6f08
+  7d:	b9 0a 00 00 00       	mov    ecx,0xa
+  82:	f3 a5                	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]
+  84:	66 8b 44 24 08       	mov    ax,WORD PTR [esp+0x8]
+  89:	c1 e0 10             	shl    eax,0x10
+  8c:	66 8b 44 24 0c       	mov    ax,WORD PTR [esp+0xc]
+  91:	a3 04 6f 00 00       	mov    ds:0x6f04,eax
+  96:	66 8b 44 24 10       	mov    ax,WORD PTR [esp+0x10]
+  9b:	c1 e0 10             	shl    eax,0x10
+  9e:	66 8b 44 24 14       	mov    ax,WORD PTR [esp+0x14]
+  a3:	a3 00 6f 00 00       	mov    ds:0x6f00,eax
+  a8:	66 bb 02 00          	mov    bx,0x2
+  ac:	eb 5c                	jmp    10a <SwitchToReal>
+
+000000ae <_PxeCallApi>:
+  ae:	8b 44 24 04          	mov    eax,DWORD PTR [esp+0x4]
+  b2:	c1 e0 10             	shl    eax,0x10
+  b5:	66 8b 44 24 08       	mov    ax,WORD PTR [esp+0x8]
+  ba:	a3 38 6f 00 00       	mov    ds:0x6f38,eax
+  bf:	66 8b 44 24 0c       	mov    ax,WORD PTR [esp+0xc]
+  c4:	66 a3 44 6f 00 00    	mov    ds:0x6f44,ax
+  ca:	8b 44 24 10          	mov    eax,DWORD PTR [esp+0x10]
+  ce:	c1 e8 04             	shr    eax,0x4
+  d1:	25 00 f0 00 00       	and    eax,0xf000
+  d6:	66 a3 3c 6f 00 00    	mov    ds:0x6f3c,ax
+  dc:	8b 44 24 10          	mov    eax,DWORD PTR [esp+0x10]
+  e0:	25 ff ff 00 00       	and    eax,0xffff
+  e5:	66 a3 40 6f 00 00    	mov    ds:0x6f40,ax
+  eb:	60                   	pusha  
+  ec:	66 bb 03 00          	mov    bx,0x3
+  f0:	e8 08 00 00 00       	call   fd <i386CallRealMode>
+  f5:	61                   	popa   
+  f6:	66 a1 48 6f 00 00    	mov    ax,ds:0x6f48
+  fc:	c3                   	ret    
+
+000000fd <i386CallRealMode>:
+  fd:	c7 05 22 00 00 00 09 	mov    DWORD PTR ds:0x22,0x109
+ 104:	01 00 00 
+ 107:	eb 01                	jmp    10a <SwitchToReal>
+
+00000109 <i386CallRealMode_return>:
+ 109:	c3                   	ret    
+
+0000010a <SwitchToReal>:
+ 10a:	66 b8 10 00          	mov    ax,0x10
+ 10e:	8e d8                	mov    ds,eax
+ 110:	8e c0                	mov    es,eax
+ 112:	8e e0                	mov    fs,eax
+ 114:	8e e8                	mov    gs,eax
+ 116:	8e d0                	mov    ss,eax
+ 118:	89 25 28 01 00 00    	mov    DWORD PTR ds:0x128,esp
+ 11e:	ea       	jmp    0x18:0x0
+
+0000011f <SwitchToReal16Address>:
+ 11f:	00 00                	add    BYTE PTR [eax],al
+ 121:	00 00                	add    BYTE PTR [eax],al
+ 123:	18 00                	sbb    BYTE PTR [eax],al
+ 125:	90                   	nop
+
+00000126 <stack16>:
+ 126:	00 6f              	add    BYTE PTR [edi+0x0],ch
+
+00000128 <stack32>:
+ 128:	00 f0                	add    al,dh
+	...
+
+0000012c <gdt>:
+	...
+ 134:	ff                   	(bad)  
+ 135:	ff 00                	inc    DWORD PTR [eax]
+ 137:	00 00                	add    BYTE PTR [eax],al
+ 139:	9a cf 00 ff ff 00 00 	call   0x0:0xffff00cf
+ 140:	00 92 cf 00 ff ff    	add    BYTE PTR [edx-0xff31],dl
+ 146:	00 00                	add    BYTE PTR [eax],al
+ 148:	00 9e 00 00 ff ff    	add    BYTE PTR [esi-0x10000],bl
+ 14e:	00 00                	add    BYTE PTR [eax],al
+ 150:	00 92 00 00      	add    BYTE PTR [edx+0x270000],dl
+
+00000154 <gdtptr>:
+ 154:	27                   	daa    
+ 155:	00 2c 01             	add    BYTE PTR [ecx+eax*1],ch
+	...
+
+0000015a <i386idtptr>:
+ 15a:	ff 00                	inc    DWORD PTR [eax]
+ 15c:	00 00                	add    BYTE PTR [eax],al
+	...
+
+00000160 <_FrldrBootDrive>:
+	...
+
+00000161 <_FrldrBootPartition>:
+ 161:	00 00                	add    BYTE PTR [eax],al
+ 163:	00 00                	add    BYTE PTR [eax],al
+ 165:	90                   	nop
+ 166:	90                   	nop
+ 167:	90                   	nop
+
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	86 00                	xchg   BYTE PTR [eax],al
+   2:	00 00                	add    BYTE PTR [eax],al
+   4:	03 00                	add    eax,DWORD PTR [eax]
+   6:	1e                   	push   ds
+   7:	00 00                	add    BYTE PTR [eax],al
+   9:	00 01                	add    BYTE PTR [ecx],al
+   b:	01 fb                	add    ebx,edi
+   d:	0e                   	push   cs
+   e:	0d 00 01 01 01       	or     eax,0x1010100
+  13:	01 00                	add    DWORD PTR [eax],eax
+  15:	00 00                	add    BYTE PTR [eax],al
+  17:	01 00                	add    DWORD PTR [eax],eax
+  19:	00 01                	add    BYTE PTR [ecx],al
+  1b:	00 65 6e             	add    BYTE PTR [ebp+0x6e],ah
+  1e:	74 72                	je     92 <_Relocator16Boot+0x1e>
+  20:	79 2e                	jns    50 <.debug_line+0x50>
+  22:	53                   	push   ebx
+  23:	00 00                	add    BYTE PTR [eax],al
+  25:	00 00                	add    BYTE PTR [eax],al
+  27:	00 00                	add    BYTE PTR [eax],al
+  29:	05 02 00 00 00       	add    eax,0x2
+  2e:	00 19                	add    BYTE PTR [ecx],bl
+  30:	03 0a                	add    ecx,DWORD PTR [edx]
+  32:	20 4b 2f             	and    BYTE PTR [ebx+0x2f],cl
+  35:	2f                   	das    
+  36:	2f                   	das    
+  37:	2f                   	das    
+  38:	31 68 77             	xor    DWORD PTR [eax+0x77],ebp
+  3b:	a5                   	movs   DWORD PTR es:[edi],DWORD PTR ds:[esi]
+  3c:	67 2f                	addr16 das 
+  3e:	2f                   	das    
+  3f:	5b                   	pop    ebx
+  40:	59                   	pop    ecx
+  41:	5b                   	pop    ebx
+  42:	2f                   	das    
+  43:	59                   	pop    ecx
+  44:	59                   	pop    ecx
+  45:	2f                   	das    
+  46:	3d 31 5b 5b 21       	cmp    eax,0x215b5b31
+  4b:	5c                   	pop    esp
+  4c:	2f                   	das    
+  4d:	21 26                	and    DWORD PTR [esi],esp
+  4f:	5b                   	pop    ebx
+  50:	4b                   	dec    ebx
+  51:	03 16                	add    edx,DWORD PTR [esi]
+  53:	58                   	pop    eax
+  54:	4b                   	dec    ebx
+  55:	59                   	pop    ecx
+  56:	59                   	pop    ecx
+  57:	33 59 3d             	xor    ebx,DWORD PTR [ecx+0x3d]
+  5a:	59                   	pop    ecx
+  5b:	03 0a                	add    ecx,DWORD PTR [edx]
+  5d:	58                   	pop    eax
+  5e:	59                   	pop    ecx
+  5f:	3d 59 5b 4b 03       	cmp    eax,0x34b5b59
+  64:	0b 2e                	or     ebp,DWORD PTR [esi]
+  66:	4b                   	dec    ebx
+  67:	3d 59 5b 59 69       	cmp    eax,0x69595b59
+  6c:	4b                   	dec    ebx
+  6d:	3d 59 67 4b 59       	cmp    eax,0x594b6759
+  72:	68 23 4b 5a 22       	push   0x225a4b23
+  77:	68 26 9f 30 03       	push   0x3309f26
+  7c:	09 20                	or     DWORD PTR [eax],esp
+  7e:	4b                   	dec    ebx
+  7f:	2f                   	das    
+  80:	2f                   	das    
+  81:	2f                   	das    
+  82:	2f                   	das    
+  83:	31 cf                	xor    edi,ecx
+  85:	02 40 00             	add    al,BYTE PTR [eax+0x0]
+  88:	01 01                	add    DWORD PTR [ecx],eax
+
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	22 00                	and    al,BYTE PTR [eax]
+   2:	00 00                	add    BYTE PTR [eax],al
+   4:	02 00                	add    al,BYTE PTR [eax]
+   6:	00 00                	add    BYTE PTR [eax],al
+   8:	00 00                	add    BYTE PTR [eax],al
+   a:	04 01                	add    al,0x1
+	...
+  14:	65 01 00             	add    DWORD PTR gs:[eax],eax
+  17:	00 00                	add    BYTE PTR [eax],al
+  19:	00 00                	add    BYTE PTR [eax],al
+  1b:	00 08                	add    BYTE PTR [eax],cl
+  1d:	00 00                	add    BYTE PTR [eax],al
+  1f:	00 19                	add    BYTE PTR [ecx],bl
+  21:	00 00                	add    BYTE PTR [eax],al
+  23:	00 01                	add    BYTE PTR [ecx],al
+  25:	80                   	.byte 0x80
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	01 11                	add    DWORD PTR [ecx],edx
+   2:	00 10                	add    BYTE PTR [eax],dl
+   4:	06                   	push   es
+   5:	11 01                	adc    DWORD PTR [ecx],eax
+   7:	12 01                	adc    al,BYTE PTR [ecx]
+   9:	03 0e                	add    ecx,DWORD PTR [esi]
+   b:	1b 0e                	sbb    ecx,DWORD PTR [esi]
+   d:	25 0e 13 05 00       	and    eax,0x5130e
+	...
+
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	1c 00                	sbb    al,0x0
+   2:	00 00                	add    BYTE PTR [eax],al
+   4:	02 00                	add    al,BYTE PTR [eax]
+   6:	00 00                	add    BYTE PTR [eax],al
+   8:	00 00                	add    BYTE PTR [eax],al
+   a:	04 00                	add    al,0x0
+	...
+  14:	65 01 00             	add    DWORD PTR gs:[eax],eax
+	...
+
+Disassembly of section .debug_str:
+
+00000000 <.debug_str>:
+   0:	65 6e                	outs   dx,BYTE PTR gs:[esi]
+   2:	74 72                	je     76 <_Relocator16Boot+0x2>
+   4:	79 2e                	jns    34 <_FrldrStartup+0xe>
+   6:	53                   	push   ebx
+   7:	00 63 3a             	add    BYTE PTR [ebx+0x3a],ah
+   a:	5c                   	pop    esp
+   b:	70 72                	jo     7f <_Relocator16Boot+0xb>
+   d:	6f                   	outs   dx,DWORD PTR ds:[esi]
+   e:	6a 65                	push   0x65
+  10:	63 74 73 5c          	arpl   WORD PTR [ebx+esi*2+0x5c],si
+  14:	74 65                	je     7b <_Relocator16Boot+0x7>
+  16:	73 74                	jae    8c <_Relocator16Boot+0x18>
+  18:	00 47 4e             	add    BYTE PTR [edi+0x4e],al
+  1b:	55                   	push   ebp
+  1c:	20 41 53             	and    BYTE PTR [ecx+0x53],al
+  1f:	20 32                	and    BYTE PTR [edx],dh
+  21:	2e 33 34 00          	xor    esi,DWORD PTR cs:[eax+eax*1]

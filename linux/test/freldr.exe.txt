@@ -1,0 +1,137 @@
+
+freeldr_pe.exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+00010200 <.text>:
+   10200:	66 66 b8 10 00       	data16 mov ax,0x10
+   10205:	8e d8                	mov    ds,eax
+   10207:	8e c0                	mov    es,eax
+   10209:	8e e0                	mov    fs,eax
+   1020b:	8e e8                	mov    gs,eax
+   1020d:	8e d0                	mov    ss,eax
+   1020f:	8b 25 28 03 01 00    	mov    esp,DWORD PTR ds:0x10328
+   10215:	0f 01 1d 5a 03 01 00 	lidtd  ds:0x1035a
+   1021c:	ff 25 22 02 01 00    	jmp    DWORD PTR ds:0x10222
+   10222:	26 02 01             	add    al,BYTE PTR es:[ecx]
+   10225:	00 88 15 60 03 01    	add    BYTE PTR [eax+0x1036015],cl
+   1022b:	00 31                	add    BYTE PTR [ecx],dh
+   1022d:	c0 88 f0 a3 61 03 01 	ror    BYTE PTR [eax+0x361a3f0],0x1
+   10234:	00 a1 00 6f 00 00    	add    BYTE PTR [ecx+0x6f00],ah
+   1023a:	a3 1f 03 01 00       	mov    ds:0x1031f,eax
+   1023f:	31 c0                	xor    eax,eax
+   10241:	bf 90 03 01 00       	mov    edi,0x10390
+   10246:	b9 93 04 01 00       	mov    ecx,0x10493
+   1024b:	29 f9                	sub    ecx,edi
+   1024d:	c1 e9 02             	shr    ecx,0x2
+   10250:	f3 ab                	rep stos DWORD PTR es:[edi],eax
+   10252:	e8 27 01 00 00       	call   0x1037e
+   10257:	b8 00 02 01 00       	mov    eax,0x10200
+   1025c:	50                   	push   eax
+   1025d:	e8 28 01 00 00       	call   0x1038a
+   10262:	eb fe                	jmp    0x10262
+   10264:	90                   	nop
+   10265:	90                   	nop
+   10266:	e8 19 01 00 00       	call   0x10384
+   1026b:	66 bb 01 00          	mov    bx,0x1
+   1026f:	e9 96 00 00 00       	jmp    0x1030a
+   10274:	8b 74 24 04          	mov    esi,DWORD PTR [esp+0x4]
+   10278:	bf 08 6f 00 00       	mov    edi,0x6f08
+   1027d:	b9 0a 00 00 00       	mov    ecx,0xa
+   10282:	f3 a5                	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]
+   10284:	66 8b 44 24 08       	mov    ax,WORD PTR [esp+0x8]
+   10289:	c1 e0 10             	shl    eax,0x10
+   1028c:	66 8b 44 24 0c       	mov    ax,WORD PTR [esp+0xc]
+   10291:	a3 04 6f 00 00       	mov    ds:0x6f04,eax
+   10296:	66 8b 44 24 10       	mov    ax,WORD PTR [esp+0x10]
+   1029b:	c1 e0 10             	shl    eax,0x10
+   1029e:	66 8b 44 24 14       	mov    ax,WORD PTR [esp+0x14]
+   102a3:	a3 00 6f 00 00       	mov    ds:0x6f00,eax
+   102a8:	66 bb 02 00          	mov    bx,0x2
+   102ac:	eb 5c                	jmp    0x1030a
+   102ae:	8b 44 24 04          	mov    eax,DWORD PTR [esp+0x4]
+   102b2:	c1 e0 10             	shl    eax,0x10
+   102b5:	66 8b 44 24 08       	mov    ax,WORD PTR [esp+0x8]
+   102ba:	a3 38 6f 00 00       	mov    ds:0x6f38,eax
+   102bf:	66 8b 44 24 0c       	mov    ax,WORD PTR [esp+0xc]
+   102c4:	66 a3 44 6f 00 00    	mov    ds:0x6f44,ax
+   102ca:	8b 44 24 10          	mov    eax,DWORD PTR [esp+0x10]
+   102ce:	c1 e8 04             	shr    eax,0x4
+   102d1:	25 00 f0 00 00       	and    eax,0xf000
+   102d6:	66 a3 3c 6f 00 00    	mov    ds:0x6f3c,ax
+   102dc:	8b 44 24 10          	mov    eax,DWORD PTR [esp+0x10]
+   102e0:	25 ff ff 00 00       	and    eax,0xffff
+   102e5:	66 a3 40 6f 00 00    	mov    ds:0x6f40,ax
+   102eb:	60                   	pusha  
+   102ec:	66 bb 03 00          	mov    bx,0x3
+   102f0:	e8 08 00 00 00       	call   0x102fd
+   102f5:	61                   	popa   
+   102f6:	66 a1 48 6f 00 00    	mov    ax,ds:0x6f48
+   102fc:	c3                   	ret    
+   102fd:	c7 05 22 02 01 00 09 	mov    DWORD PTR ds:0x10222,0x10309
+   10304:	03 01 00 
+   10307:	eb 01                	jmp    0x1030a
+   10309:	c3                   	ret    
+   1030a:	66 b8 10 00          	mov    ax,0x10
+   1030e:	8e d8                	mov    ds,eax
+   10310:	8e c0                	mov    es,eax
+   10312:	8e e0                	mov    fs,eax
+   10314:	8e e8                	mov    gs,eax
+   10316:	8e d0                	mov    ss,eax
+   10318:	89 25 28 03 01 00    	mov    DWORD PTR ds:0x10328,esp
+   1031e:	ea 00 00 00 00 18 00 	jmp    0x18:0x0
+   10325:	90                   	nop
+   10326:	00 6f 00             	add    BYTE PTR [edi+0x0],ch
+   10329:	f0 00 00             	lock add BYTE PTR [eax],al
+	...
+   10334:	ff                   	(bad)  
+   10335:	ff 00                	inc    DWORD PTR [eax]
+   10337:	00 00                	add    BYTE PTR [eax],al
+   10339:	9a cf 00 ff ff 00 00 	call   0x0:0xffff00cf
+   10340:	00 92 cf 00 ff ff    	add    BYTE PTR [edx-0xff31],dl
+   10346:	00 00                	add    BYTE PTR [eax],al
+   10348:	00 9e 00 00 ff ff    	add    BYTE PTR [esi-0x10000],bl
+   1034e:	00 00                	add    BYTE PTR [eax],al
+   10350:	00 92 00 00 27 00    	add    BYTE PTR [edx+0x270000],dl
+   10356:	2c 03                	sub    al,0x3
+   10358:	01 00                	add    DWORD PTR [eax],eax
+   1035a:	ff 00                	inc    DWORD PTR [eax]
+   1035c:	90                   	nop
+   1035d:	03 01                	add    eax,DWORD PTR [ecx]
+   1035f:	00 00                	add    BYTE PTR [eax],al
+   10361:	00 00                	add    BYTE PTR [eax],al
+   10363:	00 00                	add    BYTE PTR [eax],al
+   10365:	90                   	nop
+   10366:	90                   	nop
+   10367:	90                   	nop
+   10368:	55                   	push   ebp
+   10369:	89 e5                	mov    ebp,esp
+   1036b:	83 ec 08             	sub    esp,0x8
+   1036e:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
+   10371:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
+   10374:	88 55 fc             	mov    BYTE PTR [ebp-0x4],dl
+   10377:	66 89 45 f8          	mov    WORD PTR [ebp-0x8],ax
+   1037b:	90                   	nop
+   1037c:	c9                   	leave  
+   1037d:	c3                   	ret    
+   1037e:	55                   	push   ebp
+   1037f:	89 e5                	mov    ebp,esp
+   10381:	90                   	nop
+   10382:	5d                   	pop    ebp
+   10383:	c3                   	ret    
+   10384:	55                   	push   ebp
+   10385:	89 e5                	mov    ebp,esp
+   10387:	90                   	nop
+   10388:	5d                   	pop    ebp
+   10389:	c3                   	ret    
+   1038a:	55                   	push   ebp
+   1038b:	89 e5                	mov    ebp,esp
+   1038d:	90                   	nop
+   1038e:	5d                   	pop    ebp
+   1038f:	c3                   	ret    
+
+Disassembly of section .bss:
+
+00010390 <.bss>:
+	...

@@ -1,0 +1,23 @@
+{
+	"dependencies":[
+		"perception",
+		"musl"
+	],
+	"ignore":[],
+	"include":[],
+	"public_define": [
+		"_LIBCPP_HAS_THREAD_API_C11",
+		"LIBCXXRT",
+		"_LIBCPP_HAS_THREAD_API_PTHREAD",
+		"_LIBCPP_NO_EXCEPTIONS",
+		"_LIBCXXABI_NO_EXCEPTIONS"
+	],
+	"define": [
+		"_LIBCPP_BUILDING_LIBRARY",
+		"LIBCXX_BUILDING_LIBCXXABI",
+		"_LIBUNWIND_DISABLE_VISIBILITY_ANNOTATIONS",
+		"_LIBCPP_PROVIDES_DEFAULT_RUNE_TABLE"
+	],
+	"third_party": true,
+	"skip_local": true
+}

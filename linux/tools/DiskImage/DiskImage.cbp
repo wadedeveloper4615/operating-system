@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DiskImage" />
+		<Option makefile="makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug32">
+				<Option output="bin/Debug32/DiskImage32" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug32/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-w" />
+					<Add option="-std=c++11" />
+					<Add option="-std=c11" />
+					<Add option="-m32" />
+					<Add option="-g" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m32" />
+				</Linker>
+			</Target>
+			<Target title="Release32">
+				<Option output="bin/Release32/DiskImage32" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release32/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-flto" />
+					<Add option="-O3" />
+					<Add option="-w" />
+					<Add option="-std=c++11" />
+					<Add option="-std=c11" />
+					<Add option="-m32" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m32" />
+				</Linker>
+			</Target>
+			<Target title="Debug64">
+				<Option output="bin/Debug64/DiskImage64" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug64/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-w" />
+					<Add option="-std=c++11" />
+					<Add option="-std=c11" />
+					<Add option="-m64" />
+					<Add option="-g" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m64" />
+				</Linker>
+			</Target>
+			<Target title="Release64">
+				<Option output="bin/Release64/DiskImage64" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release64/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-flto" />
+					<Add option="-O3" />
+					<Add option="-w" />
+					<Add option="-std=c++11" />
+					<Add option="-std=c11" />
+					<Add option="-m64" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m64" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Debug32;Release32;Debug64;Release64;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="FATFileSystem.h" />
+		<Unit filename="FatData.h" />
+		<Unit filename="exfat.cpp" />
+		<Unit filename="exfat.h" />
+		<Unit filename="fat.h" />
+		<Unit filename="fat12.cpp" />
+		<Unit filename="fat12.h" />
+		<Unit filename="fat16.cpp" />
+		<Unit filename="fat16.h" />
+		<Unit filename="fat32.cpp" />
+		<Unit filename="fat32.h" />
+		<Unit filename="file.cpp" />
+		<Unit filename="file.h" />
+		<Unit filename="filesystem.cpp" />
+		<Unit filename="filesystem.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

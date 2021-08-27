@@ -1,0 +1,168 @@
+# depslib dependency file v1.0
+1627146667 source:c:\projects\linux\tools\diskimage\ext2.cpp
+	<windows.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"main.h"
+	"ext2.h"
+
+1627144768 c:\projects\linux\tools\diskimage\main.h
+
+1626959376 c:\projects\linux\tools\diskimage\ext2.h
+
+1628109741 source:c:\projects\linux\tools\diskimage\fat12.cpp
+	<windows.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"fat12.h"
+
+1627146724 c:\projects\linux\tools\diskimage\print.h
+	"mbr.h"
+	"fat12.h"
+	"fat16.h"
+	"fat32.h"
+	"direntry.h"
+
+1627144813 c:\projects\linux\tools\diskimage\mbr.h
+	<windows.h>
+
+1628012010 c:\projects\linux\tools\diskimage\fat12.h
+	<string>
+	"file.h"
+	"fat.h"
+	"FATFileSystem.h"
+
+1628012046 c:\projects\linux\tools\diskimage\fat16.h
+	<string>
+	"file.h"
+	"fat.h"
+	"FATFileSystem.h"
+
+1628013598 c:\projects\linux\tools\diskimage\fat32.h
+	<string>
+	"file.h"
+	"fat.h"
+	"FATFileSystem.h"
+
+1627146709 c:\projects\linux\tools\diskimage\direntry.h
+
+1628109752 source:c:\projects\linux\tools\diskimage\fat16.cpp
+	<windows.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"fat16.h"
+
+1628109711 source:c:\projects\linux\tools\diskimage\fat32.cpp
+	<windows.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"fat32.h"
+
+1628183286 source:c:\projects\linux\tools\diskimage\filesystem.cpp
+	<time.h>
+	<sys/time.h>
+	<sys/timeb.h>
+	"filesystem.h"
+	"file.h"
+
+1628182344 c:\projects\linux\tools\diskimage\filesystem.h
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"file.h"
+	"FATFileSystem.h"
+	"fat12.h"
+	"fat16.h"
+	"fat32.h"
+	"exfat.h"
+	"FatData.h"
+	"Fat.h"
+
+1628182375 source:c:\projects\linux\tools\diskimage\main.cpp
+	"filesystem.h"
+	"FatData.h"
+
+1627146634 source:c:\projects\linux\tools\diskimage\print.cpp
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"main.h"
+	"print.h"
+	<string>
+
+1628109842 c:\projects\linux\tools\diskimage\file.h
+	<windows.h>
+
+1628110202 source:c:\projects\linux\tools\diskimage\file.cpp
+	<windows.h>
+	<tchar.h>
+	<stdio.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<io.h>
+	<stdio.h>
+	<strsafe.h>
+	<errno.h>
+	<cstdint>
+	"file.h"
+
+1628109705 source:c:\projects\linux\tools\diskimage\exfat.cpp
+	<windows.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<string.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdint.h>
+	"exfat.h"
+
+1627590973 c:\projects\linux\tools\diskimage\exfat.h
+	"file.h"
+	"FATFileSystem.h"
+
+1627590973 c:\projects\linux\tools\diskimage\fatfilesystem.h
+
+1627757044 c:\projects\linux\tools\diskimage\fat1216.h
+
+1627927386 c:\projects\linux\tools\diskimage\fatdata.h
+
+1628108439 c:\projects\linux\tools\diskimage\fat.h
+	"FatData.h"
+

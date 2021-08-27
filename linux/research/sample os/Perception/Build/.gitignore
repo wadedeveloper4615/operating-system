@@ -1,0 +1,10 @@
+# Packages that are downloaded and not part of the Build source.
+package-lock.json
+node_modules
+
+# Configuration file for the system that is running the build script.
+tools.json
+
+# Temporary files we sometimes output during building.
+map.txt
+temp.d

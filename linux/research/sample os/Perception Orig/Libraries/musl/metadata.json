@@ -1,0 +1,20 @@
+{
+	"public_include": [
+		"include"
+	],
+	"include": [
+		"source",
+		"source/include",
+		"source/internal"
+	],
+	"public_define": [
+		"_GNU_SOURCE"
+	],
+	"dependencies":[
+		"perception",
+		"libcxx"
+	],
+	"third_party": true,
+	"skip_local": true
+}
+

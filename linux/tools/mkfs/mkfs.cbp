@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mkfs" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug32">
+				<Option output="bin/Debug32/mkfs32" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug32/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-w" />
+					<Add option="-m32" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m32" />
+				</Linker>
+			</Target>
+			<Target title="Release32">
+				<Option output="bin/Release32/mkfs32" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release32/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-flto" />
+					<Add option="-O3" />
+					<Add option="-w" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+				</Linker>
+			</Target>
+			<Target title="Debug64">
+				<Option output="bin/Debug64/mkfs64" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug64/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-w" />
+					<Add option="-m64" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m64" />
+				</Linker>
+			</Target>
+			<Target title="Release64">
+				<Option output="bin/Release64/mkfs64" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release64/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-flto" />
+					<Add option="-O3" />
+					<Add option="-w" />
+					<Add option="-m64" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m64" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Debug32;Release32;Debug64;Release64;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="blkdev/blkdev.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="blkdev/blkdev.h" />
+		<Unit filename="blkdev/linux_version.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="blkdev/linux_version.h" />
+		<Unit filename="boot.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="boot.h" />
+		<Unit filename="charconv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="charconv.h" />
+		<Unit filename="check.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="check.h" />
+		<Unit filename="common.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="common.h" />
+		<Unit filename="device_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="device_info.h" />
+		<Unit filename="endian_compat.h" />
+		<Unit filename="fat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fat.h" />
+		<Unit filename="fatlabel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="file.h" />
+		<Unit filename="fsck.fat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fsck.fat.h" />
+		<Unit filename="io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="io.h" />
+		<Unit filename="lfn.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lfn.h" />
+		<Unit filename="mkfs.fat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="msdos_fs.h" />
+		<Unit filename="testdevinfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="version.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

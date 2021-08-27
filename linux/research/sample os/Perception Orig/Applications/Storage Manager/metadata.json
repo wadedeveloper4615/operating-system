@@ -1,0 +1,5 @@
+{"dependencies":[
+	"libcxx",
+	"musl",
+	"perception"
+]}

@@ -1,0 +1,304 @@
+     1                                  [BITS 16]
+     2                                  [ORG 0]
+     3 00000000 EB3A                        jmp short start
+     4                                  
+     5 00000002 4D5357494E342E31        OEMid           db "MSWIN4.1"       ; OEM id. 8 bytes in size, basically a version string
+     6 0000000A 0002                    BytesPerSector  dw 512              ; bytes making up each sector, 2 bytes
+     7 0000000C 01                      SecsPerCluster  db 1                ; sectors per cluster, 1 byte
+     8 0000000D 0100                    ReserveCount    dw 1                ; reserved sectors before first FAT, 2 bytes
+     9 0000000F 02                      FATcount        db 2                ; number of FATs appearing on media
+    10 00000010 E000                    DirEntries      dw 224              ; directory entries max (root dir), 2 bytes
+    11 00000012 400B                    TotalSectors    dw 2880             ; Total sectors in file system (1.44MB Floppy)
+    12 00000014 F0                      MediaDescriptor db 0xF0             ; Media descriptor, 1 byte. F0 for 1.44M
+    13 00000015 0900                    SectorsPerFAT   dw 9                ; Sectors per FAT, 2 bytes
+    14 00000017 1200                    SectorsPerTrack dw 18               ; Sectors per track, 2 bytes.
+    15 00000019 0200                    HeadCount       dw 2                ; Number of drive heads (On a double sided diskette, there are 2 :))
+    16 0000001B 00000000                HiddenSectors   dd 0                ; Hidden sectors before FAT. should be zero on an unpartitioned media
+    17 0000001F 00000000                                dd 0
+    18 00000023 00                      DriveNumber     db 0                ; Physical drive number, 0 is removable. 80h for hdd
+    19 00000024 01                      DirtyBit        db 1                ; WinNT uses this field to check if the fs is clean
+    20 00000025 29                      extBootSig      db 0x29             ; This lets us know the EBPB exists
+    21 00000026 4D000000                VolumeID        dd 77               ; Serial number for the volume
+    22 0000002A 6475724F5320202020-     VolumeLabel     db "durOS     ",0   ; Volume label. pad out to 11 bytes with spaces
+    22 00000033 2000               
+    23                                  ;FSType          db "FAT12   "       ; File system type, pad with blanks to 8 bytes
+    24 00000035 46415431322020          FSType          db "FAT12  "       ; File system type, pad with blanks to 8 bytes
+    25                                  
+    26                                  start:    
+    27 0000003C B8C007                      mov ax, 0x7c0
+    28 0000003F 8ED8                        mov ds, ax
+    29 00000041 B8C007                      mov ax, 0x7c0
+    30 00000044 8EC0                        mov es, ax
+    31 00000046 FA                          cli
+    32 00000047 B80070                      mov ax, 0x7000
+    33 0000004A 8ED0                        mov ss, ax
+    34 0000004C BCFFFF                      mov sp, 0xFFFF
+    35 0000004F FB                          sti
+    36                                  
+    37 00000050 E86600                      call cls
+    38                                  
+    39                                      ; Set up arguments to int 13h
+    40 00000053 8B0E[1500]                  mov cx, WORD [SectorsPerFAT] ; sectors to load from disk
+    41 00000057 A1[0D00]                    mov ax, WORD [ReserveCount]  ; sector offset from sector 0
+    42 0000005A BB0002                      mov bx, 0x200                ; We don't want to overwrite the boot block
+    43                                                                   ; after the reserved sectors (in our case, the boot sector)
+    44 0000005D 891E[EF01]                  mov WORD [FAT0addr], bx      ; Save the address offset so we can use it later.
+    45 00000061 E86B00                      call read_sectors            ; Make it so number 1.
+    46                                  
+    47 00000064 B82000                      mov ax, 0x20                    ; size of each root dir entry is 32 bytes
+    48 00000067 F726[1000]                  mul WORD [DirEntries]           ; DirEntries * 32 / BytesPerSector = RootSize
+    49 0000006B F736[0A00]                  div WORD [BytesPerSector]       ; ax now has root dir size in bytes.
+    50 0000006F 91                          xchg ax, cx
+    51                                      
+    52                                      ; Now, calculate the root directory location on disk, and store to ax
+    53 00000070 A0[0F00]                    mov al, BYTE [FATcount]
+    54 00000073 F726[1500]                  mul WORD [SectorsPerFAT]
+    55                                      
+    56                                      ; We'll compute the RAM location to store the root dir to here before we add the sector reserve
+    57 00000077 89C3                        mov bx, ax                  ; bx now has the number of sectors taken by the FATs
+    58 00000079 F726[0A00]                  mul WORD [BytesPerSector]   ; FATCount * SectorsPerFAT * BytesPerSector + ReserveCount = offset
+    59 0000007D 050002                      add ax, 0x200               ; offset the boot code
+    60                                                                  ; ax now has the offset to apply to RAM
+    61 00000080 93                          xchg bx, ax                 ; swap the two over and continue
+    62 00000081 0306[0D00]                  add ax, WORD [ReserveCount] ; skip this many sectors
+    63 00000085 891E[F101]                  mov WORD [rootaddr], bx     ; save to ram for later on
+    64                                                                  ; root directory will be loaded at 07c0:2600 (A200 physical)
+    65 00000089 E84300                      call read_sectors     
+    66                                  
+    67                                      ; OK, that should do it for the disk reading for now. we have copies of FAT0 and FAT1 in RAM
+    68                                      ; Now, we want to find the kernel image so we can continue execution. We'll load this above the root directory
+    69                                      ; The root directory occupies 14 sectors from 7E0:2400 -> 7E0:3E00, so this is where we'll load the image.
+    70                                      ; We are guaranteed 465kb to be free here, this should be ample space to load our second stage image.
+    71 0000008C BE[D501]                    mov si, op_k
+    72 0000008F E81700                      call print_str
+    73 00000092 E8A300                      call load_kernel
+    74 00000095 81FA0100                    cmp dx, 1
+    75 00000099 7405                        jz .opfail
+    76 0000009B EA0042C007                  jmp 7c0h:4200h
+    77                                      
+    78                                      .opfail:
+    79 000000A0 BE[BC01]                    mov si, op_fail
+    80 000000A3 E80300                      call print_str
+    81 000000A6 E81900                      call reboot
+    82                                  
+    83                                  ; print_str - outputs a string to the terminal. expects the starting address in si
+    84                                  print_str:
+    85 000000A9 AC                          lodsb
+    86 000000AA 08C0                        or al, al
+    87 000000AC 740A                        jz .done
+    88 000000AE B40E                        mov ah, 0xE
+    89 000000B0 BB0700                      mov bx, 7
+    90 000000B3 CD10                        int 10h
+    91 000000B5 E9F1FF                      jmp print_str
+    92                                    .done:
+    93 000000B8 C3                          ret
+    94                                  
+    95                                  cls:
+    96 000000B9 60                        pusha
+    97 000000BA B400                      mov ah, 0x00
+    98 000000BC B003                      mov al, 0x03  ; text mode 80x25 16 colours
+    99 000000BE CD10                      int 0x10
+   100 000000C0 61                        popa
+   101 000000C1 C3                        ret
+   102                                  
+   103                                  ; reboot - wait for keypress and then reboot the machine
+   104                                  reboot:
+   105 000000C2 E80500                      call get_key
+   106 000000C5 EA                          db 0xEA         ; Machine code for jmp instruction
+   107 000000C6 0000                        dw 0x0000       ; Offset
+   108 000000C8 FFFF                        dw 0xFFFF       ; segment
+   109                                  
+   110                                  ; get_key - wait for a keypress and return
+   111                                  get_key:
+   112 000000CA B400                        mov ah, 0
+   113 000000CC CD16                        int 16h
+   114 000000CE C3                          ret
+   115                                  
+   116                                  
+   117                                  ; read_sectors - load sectors off the floppy disk into ram at ES:BX
+   118                                  ; Assumes that:
+   119                                  ; - cx contains the number of sectors to read off the disk. These will be read one at a time
+   120                                  ; - ax contains the LBA sector offset. This will be converted to a CHS value before the read
+   121                                  
+   122                                  read_sectors:
+   123                                    .main:
+   124 000000CF BF0500                      mov di, 5                               ; Retry on err
+   125                                  
+   126                                      ; First things first, save the values in the register while we work out the CHS value
+   127                                    .sectorloop:
+   128 000000D2 50                          push ax
+   129 000000D3 53                          push bx
+   130 000000D4 51                          push cx
+   131 000000D5 E83400                      call lbachs     ; return values will be saved below.
+   132 000000D8 B402                        mov ah, 2       ; function parameter for int 13h
+   133 000000DA B001                        mov al, 0x01; read 1 sector
+   134 000000DC 8A2E[F601]                  mov ch, BYTE [trackAbs] ; Cylinder address
+   135 000000E0 8A0E[F301]                  mov cl, BYTE [sectorAbs]; Sector address
+   136 000000E4 8A36[F501]                  mov dh, BYTE [headAbs]  ; Head address
+   137 000000E8 B200                        mov dl, 0                               ; Drive number
+   138 000000EA CD13                        int 13h                                 ; Make it so, Number 1
+   139 000000EC 7313                        jnc .readsuccess
+   140                                      ; Read failed. decrement retry count, reset and go again, or fail
+   141 000000EE 31C0                        xor ax, ax
+   142 000000F0 CD13                        int 13h                                 ; reset drive
+   143 000000F2 4F                          dec di
+   144 000000F3 59                          pop cx
+   145 000000F4 5B                          pop bx
+   146 000000F5 58                          pop ax
+   147 000000F6 75DA                        jnz .sectorloop
+   148 000000F8 BE[BC01]                    mov si, op_fail
+   149 000000FB E8ABFF                      call print_str
+   150 000000FE E8C1FF                      call reboot
+   151                                  .readsuccess:
+   152                                  ;    mov si, op_progress
+   153                                  ;    call print_str
+   154 00000101 59                          pop cx
+   155 00000102 5B                          pop bx
+   156 00000103 58                          pop ax
+   157 00000104 031E[0A00]                  add bx, WORD [BytesPerSector]   ; increment the buffer so we don't overwrite the last sector
+   158 00000108 40                          inc ax                          ; Increment LBA sector offset
+   159 00000109 E2C4                        loop .main                      ; decrement cx and start again. 
+   160 0000010B C3                          ret                             ; all sectors read
+   161                                  
+   162                                  
+   163                                  
+   164                                  ; lbachs - convert LBA address to CHS address
+   165                                  ; assumes ax is an LBA sector address
+   166                                  ; returns:
+   167                                  ; sectorAbs = (sector % SectorsPerTrack) + 1
+   168                                  ; headAbs = sector / SectorsPerTrack % HeadCount
+   169                                  ; trackAbs = sector / (SectorsPerTrack * HeadCount)
+   170                                  lbachs:
+   171 0000010C 53                          push bx
+   172 0000010D 50                          push ax                                         ; save a copy of ax for later
+   173 0000010E 31D2                        xor dx, dx
+   174                                  
+   175                                      ; do sectors first
+   176 00000110 F736[1700]                  div WORD [SectorsPerTrack]      ; dx now contains the remainder
+   177 00000114 FEC2                        inc dl                                          ; add 1
+   178 00000116 8816[F301]                  mov BYTE [sectorAbs], dl        ; Save the result
+   179 0000011A 31D2                        xor dx, dx
+   180                                  
+   181                                      ; now Heads
+   182                                      ; ax should have the quotient of sector / SPT from the previous op
+   183 0000011C F736[1900]                  div WORD [HeadCount]            ; remainder in dl again
+   184 00000120 8816[F501]                  mov BYTE [headAbs], dl
+   185                                  
+   186                                      ; Finally, do cylinders
+   187 00000124 A1[1900]                    mov ax, WORD [HeadCount]
+   188 00000127 F726[1700]                  mul WORD [SectorsPerTrack]
+   189 0000012B 31D2                        xor dx, dx
+   190 0000012D 93                          xchg bx, ax
+   191 0000012E 58                          pop ax
+   192 0000012F F7F3                        div bx                                          ; ax now contains the cylinder address
+   193 00000131 A2[F601]                    mov BYTE [trackAbs], al
+   194 00000134 31D2                        xor dx, dx
+   195 00000136 5B                          pop bx
+   196 00000137 C3                          ret
+   197                                  
+   198                                  
+   199                                  ; load_kernel - load the kernel image into RAM
+   200                                  ; assumes address is loaded to es:bx, kernel image name is assumed to be "kernel"
+   201                                  load_kernel:
+   202 00000138 31C9                        xor cx, cx
+   203 0000013A 8B1E[F101]                  mov bx, [rootaddr]
+   204                                      ; Now, we go through one at a time, and find the root dir entry that we want
+   205                                    .next:
+   206                                      ; first, we'll check for an empty entry, then a null
+   207 0000013E 8A07                        mov al, [bx]
+   208 00000140 3CE5                        cmp al, 0xE5
+   209 00000142 7414                        je .nomatch
+   210 00000144 3C00                        cmp al, 0x0
+   211 00000146 7417                        je .error
+   212 00000148 BE[E801]                    mov si, kernel
+   213 0000014B 89DF                        mov di, bx
+   214 0000014D B90600                      mov cx, 6           
+   215 00000150 F3A6                        rep cmpsb
+   216 00000152 7504                        jne .nomatch
+   217                                    .match:             ; we have a winner.
+   218 00000154 E80C00                      call fetch_kernel
+   219 00000157 C3                          ret
+   220                                    .nomatch:
+   221 00000158 81C32000                    add bx, 32
+   222 0000015C E9DFFF                      jmp .next
+   223                                    .error:
+   224 0000015F BA0100                      mov dx, 1
+   225 00000162 C3                          ret
+   226                                  
+   227                                  ; fetch_kernel - fetches kernel sectors off disk
+   228                                  ; assumes es:bx points to a valid root directory entry for the kernel file
+   229                                  fetch_kernel:
+   230 00000163 8B471A                      mov ax, WORD [bx + 26]          ; This is the first cluster address.
+   231 00000166 BB0042                      mov bx, 0x4200                  ; load our memory offset,
+   232                                    .fetch:
+   233 00000169 50                          push ax                         ; ax has the first cluster address, but we need to do stuff to it atm
+   234 0000016A 31C9                        xor cx, cx                      ; zero out cx so we don't get issues here
+   235 0000016C 051F00                      add ax, 31                      ; Physical sector number = FAT entry + ReserveCount + (FATcount * SectorsPerFAT) - 2
+   236                                                                      ; We subtract 2 because the first 2 sectors of the data area are reserved.
+   237 0000016F 8A0E[0C00]                  mov cl, BYTE [SecsPerCluster]   ; number of clusters to get from disk
+   238 00000173 E859FF                      call read_sectors               ; grab the cluster from disk
+   239 00000176 58                          pop ax
+   240 00000177 53                          push bx                         ; save the offset address as we need to load stuff from FAT
+   241                                      ; now, we need to examine the FAT and determine the next sector to load. we repeat this until all sectors are loaded into RAM
+   242                                      ; first, we need to know which side of the byte to load the additional 4 bits from
+   243                                      ; If the cluster address (n) is even:
+   244                                      ; low 4 bits from bits from 1+(3*n)/2
+   245                                      ; high 8 bits from (3*n)/2
+   246                                      ; if the cluster address is odd:
+   247                                      ; high 4 bits from (3*n)/2
+   248                                      ; low 4 bits from 1+(3*n)/2
+   249                                    .getnext:
+   250                                      ; ax has cluster address
+   251 00000178 89C1                        mov cx, ax
+   252 0000017A 89C2                        mov dx, ax
+   253 0000017C D1EA                        shr dx, 1                       ; divide by 2
+   254 0000017E 01D1                        add cx, dx                      ; 1.5 bytes
+   255 00000180 8B1E[EF01]                  mov bx, [FAT0addr]              
+   256 00000184 01CB                        add bx, cx                      ; calculate the offset in the FAT
+   257 00000186 8B17                        mov dx, WORD [bx]               ; grab 16 bits from FAT
+   258 00000188 A90100                      test ax, 1                      ; check if ax is odd or even
+   259 0000018B 7507                        jnz .odd
+   260                                    .even:
+   261 0000018D 81E2FF0F                    and dx, 0xFFF               ; use the low 12 bits
+   262 00000191 E90300                      jmp .check
+   263                                     .odd:
+   264 00000194 C1EA04                      shr dx, 0x4                 ; use high 12 bits
+   265                                     .check:                         ; at this point, ax contains the cluster address of the next block
+   266 00000197 89D0                        mov ax, dx                  ; mov the address into ax
+   267                                      ; first we examine it for state info.
+   268 00000199 3DF70F                      cmp ax, 0xFF7
+   269 0000019C 7409                        jz .error
+   270 0000019E 3DF80F                      cmp ax, 0xFF8
+   271 000001A1 7D08                        jge .done                ; all clusters loaded. 
+   272                                      ; If we have anything other than these two values, we can assume that the next cluster belongs to kernel
+   273                                      ; NOTE: there are other status codes that we are not checking that will result in error, but i want to conserve space here
+   274 000001A3 5B                          pop bx
+   275 000001A4 E9C2FF                      jmp .fetch
+   276                                    .error:
+   277 000001A7 5B                          pop bx
+   278 000001A8 BA0100                      mov dx, 1
+   279                                    .done:
+   280 000001AB 5B                          pop bx
+   281 000001AC C3                          ret
+   282                                  
+   283                                  
+   284                                  ;---------------------------------- DATA AREA -------------------------------------
+   285                                  
+   286 000001AD 204641540D0A00          op_fat          db " FAT",13,10,0
+   287 000001B4 20526F6F740D0A00        op_root         db " Root",13,10,0
+   288 000001BC 4572726F72204B6572-     op_fail         db "Error Kernel Not Found",13,10,0
+   288 000001C5 6E656C204E6F742046-
+   288 000001CE 6F756E640D0A00     
+   289 000001D5 426F6F74696E67204B-     op_k            db "Booting Kernel",13,10,0
+   289 000001DE 65726E656C0D0A00   
+   290 000001E6 2E00                    op_progress     db ".",0
+   291 000001E8 4B45524E454C00          kernel          db "KERNEL",0
+   292 000001EF 0000                    FAT0addr        dw 0
+   293 000001F1 0000                    rootaddr        dw 0
+   294 000001F3 0000                    sectorAbs       dw 0
+   295 000001F5 00                      headAbs         db 0
+   296 000001F6 00                      trackAbs        db 0
+   297                                  
+   298 000001F7 00<rept>                times 510-($-$$) db 0
+   299 000001FE 55                      db 0x55
+   300 000001FF AA                      db 0xAA
